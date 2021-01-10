@@ -1,0 +1,16 @@
+[
+{
+  "modid": "hyahm",
+  "name": "Yet Another Hypixel Mod",
+  "description": "Mod mod mod mod mod mod",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["ExampleDude"],
+  "credits": "The dev team",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
