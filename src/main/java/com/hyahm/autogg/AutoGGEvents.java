@@ -6,44 +6,51 @@ import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+import java.util.HashSet;
 import java.util.regex.Pattern;
 
 public class AutoGGEvents {
-
+    private int enqueueTime = -1;
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatEvent(ClientChatReceivedEvent event)
     {
-        HyahmMain.getInstance().logger.info("Received event");
-        // go match server and server IP
-
-        if(Minecraft.getMinecraft().getCurrentServerData() == null) {
-            HyahmMain.getInstance().logger.info("OMG THE f IS THIS WHAT");
-            return;
-        }
-
-        HyahmMain.getInstance().logger.info("HYAHM connected to: " + Minecraft.getMinecraft().getCurrentServerData().serverName);
-
-        if(Minecraft.getMinecraft().getCurrentServerData().serverIP != "mc.hypixel.net")
+        if(event.isCanceled() || HyahmMain.getInstance().isEnabled)
             return;
 
-        if(!HyahmMain.getInstance().isServer())
+        // verify its both a server and it is hypixel
+        if(Minecraft.getMinecraft().getCurrentServerData() == null)
             return;
-        if(event.isCanceled())
+        if(!Minecraft.getMinecraft().getCurrentServerData().serverIP.endsWith("hypixel.net"))
             return;
 
+
+        // delete orphans because we all are technoblade
         String msg = (Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]"))
             .matcher(event.message.getUnformattedText())
             .replaceAll("");
 
+        // anarchy
         if(!Constants.AutoGGMatch.stream().anyMatch(msg::contains))
             return;
 
-        for (Pattern expr: Constants.MatchNormal) {
-            if(expr.matcher(msg).matches())
+        for (Pattern expr : Constants.MatchNormal) {
+            if(expr.matcher(msg).matches()) {
+                HyahmMain.getInstance().logger.info("sus ngl: " + expr.toString());
                 return;
+            }
         }
 
-        Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac gg");
+        // schedule da task
+        enqueueTime = HyahmMain.getInstance().delay;
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    void onTick(TickEvent.ClientTickEvent event) {
+        if(enqueueTime == 0)
+            Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac gg");
+        if(enqueueTime > -1)
+            enqueueTime--;
     }
 }

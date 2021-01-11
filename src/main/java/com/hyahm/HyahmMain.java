@@ -1,6 +1,8 @@
 package com.hyahm;
 
+import com.hyahm.autogg.AutoGGCommands;
 import com.hyahm.autogg.AutoGGEvents;
+import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
@@ -18,13 +20,16 @@ public class HyahmMain
     public static final String VERSION = "1.0";
     public static Configuration config;
 
-
     public static final Logger logger = LogManager.getLogger();
 
     @Mod.Instance
     private static HyahmMain instance;
 
-    private static boolean isServer;
+    // LARGE AMOUT OF SETTINGS VARS INCOMING!!!!
+
+    // autogg
+    public int delay = 10; // this should be loaded from config
+    public boolean isEnabled = true;
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
@@ -37,6 +42,7 @@ public class HyahmMain
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        ClientCommandHandler.instance.registerCommand(new AutoGGCommands());
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
     }
 
@@ -53,7 +59,7 @@ public class HyahmMain
             // Read props from config
             Property p = config.get(Configuration.CATEGORY_GENERAL,
                     "autogg", // Property name
-                    "true");
+                    "10");
         } catch (Exception e) {
             // Failed reading/writing, just continue
         } finally {
@@ -61,10 +67,6 @@ public class HyahmMain
             if (config.hasChanged())
                 config.save();
         }
-    }
-
-    public boolean isServer() {
-        return this.isServer;
     }
 
     public static HyahmMain getInstance() {
