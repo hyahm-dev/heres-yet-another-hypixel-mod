@@ -18,55 +18,38 @@ public class HyahmMain
 {
     public static final String MODID = "hyahm";
     public static final String VERSION = "1.0";
-    public static Configuration config;
-
+    public ConfigManager config;
     public static final Logger logger = LogManager.getLogger();
 
     @Mod.Instance
     private static HyahmMain instance;
 
-    // LARGE AMOUT OF SETTINGS VARS INCOMING!!!!
-
-    // autogg
-    public int delay = 10; // this should be loaded from config
-    public boolean isEnabled = true;
+    public HyahmMain() {
+        config = new ConfigManager();
+    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting preinit, loading configs      ");
-        config = new Configuration(event.getSuggestedConfigurationFile());
-        syncConfig();
+        config = new ConfigManager(new Configuration(event.getSuggestedConfigurationFile()));
+
         logger.info("----------------HYAHM----------------  ");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
+        logger.info("----------------HYAHM----------------  ");
+        logger.info("Starting init, loading commands        ");
         ClientCommandHandler.instance.registerCommand(new AutoGGCommands());
+        logger.info("----------------HYAHM----------------  ");
+
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
     }
 
     @Mod.EventHandler
     public void  postInit(FMLPostInitializationEvent event) {
 
-    }
-
-    public static void syncConfig() { // Gets called from preInit
-        try {
-            // Load config
-            config.load();
-
-            // Read props from config
-            Property p = config.get(Configuration.CATEGORY_GENERAL,
-                    "autogg", // Property name
-                    "10");
-        } catch (Exception e) {
-            // Failed reading/writing, just continue
-        } finally {
-            // Save props to config IF config changed
-            if (config.hasChanged())
-                config.save();
-        }
     }
 
     public static HyahmMain getInstance() {

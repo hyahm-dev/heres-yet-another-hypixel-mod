@@ -32,10 +32,10 @@ public class AutoGGCommands implements ICommand {
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if(args.length == 0)
             sender.addChatMessage(new ChatComponentText("[" +
-                (HyahmMain.getInstance().isEnabled ? EnumChatFormatting.GREEN : EnumChatFormatting.RED) +
-                HyahmMain.getInstance().isEnabled + EnumChatFormatting.RESET +
+                (HyahmMain.getInstance().config.autoGGConfig.isEnabled ? EnumChatFormatting.GREEN : EnumChatFormatting.RED) +
+                HyahmMain.getInstance().config.autoGGConfig.isEnabled + EnumChatFormatting.RESET +
                 "]: tick delay (" +
-                HyahmMain.getInstance().delay +
+                HyahmMain.getInstance().config.autoGGConfig.delay +
                 ")"
             ));
 
@@ -45,14 +45,14 @@ public class AutoGGCommands implements ICommand {
         Integer i = Integer.getInteger(args[0]);
         if(i == null) {
             if(args[0] == "enable")
-                HyahmMain.getInstance().isEnabled = true;
+                HyahmMain.getInstance().config.autoGGConfig.isEnabled = true;
             else if(args[0] == "disable")
-                HyahmMain.getInstance().isEnabled = false;
+                HyahmMain.getInstance().config.autoGGConfig.isEnabled = false;
             else
                 return;
         }
 
-        HyahmMain.getInstance().delay = i;
+        HyahmMain.getInstance().config.autoGGConfig.delay = i;
     }
 
     // basic commands stuff

@@ -1,5 +1,7 @@
 package com.hyahm;
 
+import net.minecraft.client.Minecraft;
+
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -33,4 +35,14 @@ public class Constants {
         Pattern.compile("\\.get(SHOUT) (?<rk>\\.get(.+) )?(?<pl>\\S{1,16}): (?<msg>.*)"),
         Pattern.compile("\\.get(SPECTATOR) (?<rk>\\.get(.+) )?(?<pl>\\S{1,16}): (?<msg>.*)"),
     };
+
+    public static Pattern removeColor = Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]");
+
+    public static boolean isHypixel() {
+        if(Minecraft.getMinecraft().getCurrentServerData() == null)
+            return false;
+        if(!Minecraft.getMinecraft().getCurrentServerData().serverIP.endsWith("hypixel.net"))
+            return false;
+        return true;
+    }
 }

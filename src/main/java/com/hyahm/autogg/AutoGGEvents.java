@@ -7,6 +7,7 @@ import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import scala.tools.nsc.backend.icode.analysis.CopyPropagation;
 
 import java.util.HashSet;
 import java.util.regex.Pattern;
@@ -16,18 +17,15 @@ public class AutoGGEvents {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatEvent(ClientChatReceivedEvent event)
     {
-        if(event.isCanceled() || HyahmMain.getInstance().isEnabled)
+        if(event.isCanceled() || !HyahmMain.getInstance().config.autoGGConfig.isEnabled)
             return;
 
-        // verify its both a server and it is hypixel
-        if(Minecraft.getMinecraft().getCurrentServerData() == null)
-            return;
-        if(!Minecraft.getMinecraft().getCurrentServerData().serverIP.endsWith("hypixel.net"))
+        if(Constants.isHypixel())
             return;
 
 
         // delete orphans because we all are technoblade
-        String msg = (Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]"))
+        String msg = Constants.removeColor
             .matcher(event.message.getUnformattedText())
             .replaceAll("");
 
@@ -43,7 +41,7 @@ public class AutoGGEvents {
         }
 
         // schedule da task
-        enqueueTime = HyahmMain.getInstance().delay;
+        enqueueTime = HyahmMain.getInstance().config.autoGGConfig.delay;
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
