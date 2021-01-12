@@ -2,6 +2,8 @@ package com.hyahm;
 
 import com.hyahm.autogg.AutoGGCommands;
 import com.hyahm.autogg.AutoGGEvents;
+import com.hyahm.autotip.AutoTipCommands;
+import com.hyahm.autotip.AutoTipEvent;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
@@ -42,9 +44,12 @@ public class HyahmMain
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting init, loading commands        ");
         ClientCommandHandler.instance.registerCommand(new AutoGGCommands());
-        logger.info("----------------HYAHM----------------  ");
+        ClientCommandHandler.instance.registerCommand(new AutoTipCommands());
 
+        logger.info("Starting init, loading handlers        ");
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
+        MinecraftForge.EVENT_BUS.register(new AutoTipEvent());
+        logger.info("----------------HYAHM----------------  ");
     }
 
     @Mod.EventHandler

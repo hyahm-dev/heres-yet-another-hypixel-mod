@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 
 public class AutoGGEvents {
     private int enqueueTime = -1;
+
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatEvent(ClientChatReceivedEvent event)
     {
