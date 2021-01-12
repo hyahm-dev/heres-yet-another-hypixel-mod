@@ -7,7 +7,6 @@ import com.hyahm.autotip.AutoTipEvent;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -49,6 +48,7 @@ public class HyahmMain
         logger.info("Starting init, loading handlers        ");
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
         MinecraftForge.EVENT_BUS.register(new AutoTipEvent());
+        config = new ConfigManager();
         logger.info("----------------HYAHM----------------  ");
     }
 

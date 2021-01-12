@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a1a02ed4-34de-4de4-9113-5804115efa45" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/hyahm/autotip/AutoTipCommands.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyahm/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyahm/Constants.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hyahm/HyahmMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyahm/HyahmMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hyahm/autogg/AutoGGEvents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyahm/autogg/AutoGGEvents.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hyahm/autotip/AutoTipEventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hyahm/autotip/AutoTipEvent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
