@@ -5,10 +5,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class LevelDisplay {
+/*public class LevelDisplay {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onPlayerNameFormat(PlayerEvent.NameFormat event) {
-        if(event.isCanceled() || HyahmMain.getInstance().config.bE)
+        if(event.isCanceled() || HyahmMain.getInstance().config.)
             return;
     }
-}
+}*/
