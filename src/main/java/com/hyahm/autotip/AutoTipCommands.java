@@ -1,5 +1,6 @@
 package com.hyahm.autotip;
 
+import com.hyahm.Constants;
 import com.hyahm.HyahmMain;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -25,34 +26,44 @@ public class AutoTipCommands implements ICommand {
 
     @Override
     public List<String> getCommandAliases() {
-        return Arrays.asList("atip");
+        return Arrays.asList("atip", "at");
     }
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        if(args.length == 0)
+        if(args.length == 0) {
             sender.addChatMessage(new ChatComponentText("[" +
-                    (HyahmMain.getInstance().config.autoTipConfig.isEnabled ? EnumChatFormatting.GREEN : EnumChatFormatting.RED) +
-                    HyahmMain.getInstance().config.autoTipConfig.isEnabled + EnumChatFormatting.RESET +
-                    "]: delay (" +
-                    HyahmMain.getInstance().config.autoTipConfig.delay / 20 +
+                    Constants.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
+                    "]: seconds delay (" +
+                    HyahmMain.config.autoTipConfig.delay / 20 +
                     ")"
             ));
+        }
 
         if(args.length != 1)
             return;
 
         Integer i = Integer.getInteger(args[0]);
+        HyahmMain.logger.info(args[0]);
         if(i == null) {
-            if(args[0] == "enable")
-                HyahmMain.getInstance().config.autoTipConfig.isEnabled = true;
-            else if(args[0] == "disable")
-                HyahmMain.getInstance().config.autoTipConfig.isEnabled = false;
+            if(args[0].equals("enable")) {
+                sender.addChatMessage(new ChatComponentText("Autotip is " + Constants.getEnabledString(true)));
+                HyahmMain.config.autoTipConfig.isEnabled = true;
+            }
+            else if(args[0].equals("disable")) {
+                sender.addChatMessage(new ChatComponentText("Autotip is " + Constants.getEnabledString(false)));
+                HyahmMain.config.autoTipConfig.isEnabled = false;
+            }
             else
-                return;
+                sender.addChatMessage(new ChatComponentText("Invalid Command!"));
+
+            HyahmMain.config.sync();
+            return;
         }
 
-        HyahmMain.getInstance().config.autoTipConfig.delay = i * 20;
+        HyahmMain.config.autoTipConfig.delay = i * 20;
+        HyahmMain.config.sync();
+        return;
     }
 
     // basic commands stuff

@@ -102,8 +102,8 @@ processResources
 
 runClient {
     //Login
-    /*if (username != "") {
+    if (username != "") {
         args '--username', username
         if (password != "") args '--password', password
-    }*/
+    }
 }

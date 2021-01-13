@@ -17,7 +17,7 @@ public class AutoGGEvents {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatEvent(ClientChatReceivedEvent event)
     {
-        if(event.isCanceled() || !HyahmMain.getInstance().config.autoGGConfig.isEnabled)
+        if(event.isCanceled() || !HyahmMain.config.autoGGConfig.isEnabled)
             return;
 
         if(Constants.isHypixel())
@@ -30,25 +30,17 @@ public class AutoGGEvents {
             .replaceAll("");
 
         // anarchy
-        if(!Constants.AutoGGMatch.stream().anyMatch(msg::contains))
+        if(Constants.AutoGGMatch.stream().noneMatch(msg::contains))
             return;
 
         for (Pattern expr : Constants.MatchNormal) {
             if(expr.matcher(msg).matches()) {
-                HyahmMain.getInstance().logger.info("sus ngl: " + expr.toString());
+                HyahmMain.logger.info("sus ngl: " + expr.toString());
                 return;
             }
         }
 
         // schedule da task
-        enqueueTime = HyahmMain.getInstance().config.autoGGConfig.delay;
-    }
-
-    @SubscribeEvent(priority = EventPriority.LOW)
-    void onTick(TickEvent.ClientTickEvent event) {
-        if(enqueueTime == 0)
-            Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac gg");
-        if(enqueueTime > -1)
-            enqueueTime--;
+        HyahmMain.scheduler.enqueueEvent(HyahmMain.config.autoGGConfig.delay, () -> Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac gg"));
     }
 }
