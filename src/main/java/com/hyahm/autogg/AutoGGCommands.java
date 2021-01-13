@@ -1,5 +1,6 @@
 package com.hyahm.autogg;
 
+import com.hyahm.Constants;
 import com.hyahm.HyahmMain;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -12,7 +13,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class AutoGGCommands implements ICommand {
-
     @Override
     public String getCommandName() {
         return "autogg";
@@ -32,10 +32,9 @@ public class AutoGGCommands implements ICommand {
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if(args.length == 0)
             sender.addChatMessage(new ChatComponentText("[" +
-                (HyahmMain.getInstance().config.autoGGConfig.isEnabled ? EnumChatFormatting.GREEN : EnumChatFormatting.RED) +
-                HyahmMain.getInstance().config.autoGGConfig.isEnabled + EnumChatFormatting.RESET +
+                Constants.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
                 "]: tick delay (" +
-                HyahmMain.getInstance().config.autoGGConfig.delay +
+                HyahmMain.config.autoGGConfig.delay +
                 ")"
             ));
 
@@ -44,15 +43,23 @@ public class AutoGGCommands implements ICommand {
 
         Integer i = Integer.getInteger(args[0]);
         if(i == null) {
-            if(args[0] == "enable")
-                HyahmMain.getInstance().config.autoGGConfig.isEnabled = true;
-            else if(args[0] == "disable")
-                HyahmMain.getInstance().config.autoGGConfig.isEnabled = false;
+            if(args[0].equals("enable")) {
+                sender.addChatMessage(new ChatComponentText("Autogg is " + Constants.getEnabledString(true)));
+                HyahmMain.config.autoGGConfig.isEnabled = true;
+            }
+            else if(args[0].equals("disable")) {
+                sender.addChatMessage(new ChatComponentText("Autogg is " + Constants.getEnabledString(false)));
+                HyahmMain.config.autoGGConfig.isEnabled = false;
+            }
             else
-                return;
+                sender.addChatMessage(new ChatComponentText("Invalid Command!"));
+            HyahmMain.config.sync();
+            return;
         }
 
-        HyahmMain.getInstance().config.autoGGConfig.delay = i;
+        HyahmMain.config.autoGGConfig.delay = i;
+        HyahmMain.config.sync();
+        return;
     }
 
     // basic commands stuff

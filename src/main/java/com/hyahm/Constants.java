@@ -1,6 +1,7 @@
 package com.hyahm;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.EnumChatFormatting;
 
 import java.util.Arrays;
 import java.util.List;
@@ -43,5 +44,12 @@ public class Constants {
         if(!Minecraft.getMinecraft().getCurrentServerData().serverIP.endsWith("hypixel.net"))
             return false;
         return true;
+    }
+
+    public static String getEnabledString(boolean isEnabled) {
+        return "" + (isEnabled ? EnumChatFormatting.GREEN : EnumChatFormatting.RED) +
+                EnumChatFormatting.BOLD +
+                (isEnabled ? "Enabled" : "Disabled") +
+                EnumChatFormatting.RESET;
     }
 }

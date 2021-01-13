@@ -3,10 +3,8 @@ package com.hyahm;
 import com.hyahm.autogg.AutoGGCommands;
 import com.hyahm.autogg.AutoGGEvents;
 import com.hyahm.autotip.AutoTipCommands;
-import com.hyahm.autotip.AutoTipEvent;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -19,21 +17,18 @@ public class HyahmMain
 {
     public static final String MODID = "hyahm";
     public static final String VERSION = "1.0";
-    public ConfigManager config;
+    public static ConfigManager config = new ConfigManager();
     public static final Logger logger = LogManager.getLogger();
+    public static TickEventScheduler scheduler = new TickEventScheduler();
 
     @Mod.Instance
     private static HyahmMain instance;
-
-    public HyahmMain() {
-        config = new ConfigManager();
-    }
 
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting preinit, loading configs      ");
-        config = new ConfigManager(new Configuration(event.getSuggestedConfigurationFile()));
+        config = new ConfigManager(event.getSuggestedConfigurationFile());
 
         logger.info("----------------HYAHM----------------  ");
     }
@@ -47,13 +42,13 @@ public class HyahmMain
 
         logger.info("Starting init, loading handlers        ");
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
-        MinecraftForge.EVENT_BUS.register(new AutoTipEvent());
+        MinecraftForge.EVENT_BUS.register(new TickEventScheduler());
         config = new ConfigManager();
         logger.info("----------------HYAHM----------------  ");
     }
 
     @Mod.EventHandler
-    public void  postInit(FMLPostInitializationEvent event) {
+    public void postInit(FMLPostInitializationEvent event) {
 
     }
 
