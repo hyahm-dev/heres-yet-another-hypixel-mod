@@ -1,5 +1,6 @@
 package com.hyahm;
 
+import net.minecraftforge.client.model.IModelCustomData;
 import net.minecraftforge.common.config.Configuration;
 
 public class ConfigManager {
@@ -13,12 +14,18 @@ public class ConfigManager {
         public boolean isEnabled = true;
     }
 
+    public class BedwarsConfig {
+        public boolean isLevelsEnabled = true;
+    }
+
     public AutoGGConfig autoGGConfig;
     public AutoTipConfig autoTipConfig;
+    public BedwarsConfig bedwarsConfig;
 
     public ConfigManager() {
         this.autoGGConfig = new AutoGGConfig();
         this.autoTipConfig = new AutoTipConfig();
+        this.bedwarsConfig = new BedwarsConfig();
     }
 
     public ConfigManager(Configuration config) {
