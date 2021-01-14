@@ -27,7 +27,7 @@ hs_err_pid*
 .gradle
 
 #Intellij
-.idea/workspace.xml
+.idea
 
 #Other irrelavant folders
 build
