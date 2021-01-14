@@ -25,7 +25,7 @@ public class HyahmMain
     private static HyahmMain instance;
 
     @Mod.EventHandler
-    public void preInit(FMLPreInitializationEvent event) {
+    public static void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting preinit, loading configs      ");
         logger.debug("So you are in a debug enviroment, eh?");
@@ -36,7 +36,7 @@ public class HyahmMain
     }
 
     @Mod.EventHandler
-    public void init(FMLInitializationEvent event) {
+    public static void init(FMLInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting init, loading commands        ");
         ClientCommandHandler.instance.registerCommand(new AutoGGCommands());
@@ -45,12 +45,11 @@ public class HyahmMain
         logger.info("Starting init, loading handlers        ");
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
         MinecraftForge.EVENT_BUS.register(new TickEventScheduler());
-        config = new ConfigManager();
         logger.info("----------------HYAHM----------------  ");
     }
 
     @Mod.EventHandler
-    public void postInit(FMLPostInitializationEvent event) {
+    public static void postInit(FMLPostInitializationEvent event) {
 
     }
 

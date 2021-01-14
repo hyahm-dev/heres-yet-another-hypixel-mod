@@ -18,6 +18,7 @@ public class TickEventScheduler {
     }
 
     public void enqueueEvent(int ticks, Runnable r) {
+        HyahmMain.logger.info("enqueued event");
         Task t = new Task();
         t.r = r;
         t.tick = ticks;

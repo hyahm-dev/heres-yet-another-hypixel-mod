@@ -13,34 +13,39 @@ import java.util.regex.Pattern;
 
 public class AutoGGEvents {
     private int enqueueTime = -1;
-
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatEvent(ClientChatReceivedEvent event)
     {
         if(event.isCanceled() || !HyahmMain.config.autoGGConfig.isEnabled)
             return;
 
-        if(Constants.isHypixel())
+        // verify its both a server and it is hypixel
+        if(!Constants.isHypixel())
             return;
 
-
         // delete orphans because we all are technoblade
-        String msg = Constants.removeColor
-            .matcher(event.message.getUnformattedText())
-            .replaceAll("");
+        String msg = (Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]"))
+                .matcher(event.message.getUnformattedText())
+                .replaceAll("");
 
         // anarchy
-        if(Constants.AutoGGMatch.stream().noneMatch(msg::contains))
+        if(!Constants.AutoGGMatch.stream().anyMatch(msg::contains))
             return;
 
         for (Pattern expr : Constants.MatchNormal) {
-            if(expr.matcher(msg).matches()) {
-                HyahmMain.logger.info("sus ngl: " + expr.toString());
+            if(expr.matcher(msg).matches())
                 return;
-            }
         }
 
         // schedule da task
-        HyahmMain.scheduler.enqueueEvent(HyahmMain.config.autoGGConfig.delay, () -> Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac gg"));
+        enqueueTime = HyahmMain.config.autoGGConfig.delay;
+    }
+
+    @SubscribeEvent(priority = EventPriority.LOW)
+    void onTick(TickEvent.ClientTickEvent event) {
+        if(enqueueTime == 0)
+            Minecraft.getMinecraft().thePlayer.sendChatMessage("/ac gg");
+        if(enqueueTime > -1)
+            enqueueTime--;
     }
 }

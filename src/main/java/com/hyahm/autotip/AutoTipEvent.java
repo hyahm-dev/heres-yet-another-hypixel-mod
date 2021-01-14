@@ -18,7 +18,7 @@ public class AutoTipEvent {
         if(tickCounter == 0)
         {
             // verify its both a server and it is hypixel
-            if(Constants.isHypixel())
+            if(!Constants.isHypixel())
                 return;
 
             Minecraft.getMinecraft().thePlayer.sendChatMessage("/tip all");

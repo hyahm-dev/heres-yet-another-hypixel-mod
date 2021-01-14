@@ -57,11 +57,11 @@ public class ConfigManager {
 
                 JsonObject cfg = new JsonParser().parse(complete).getAsJsonObject();
 
-                cfg = cfg.getAsJsonObject("modules");
+                JsonObject modules = cfg.getAsJsonObject("modules");
 
-                this.autoGGConfig = gson.fromJson(cfg.getAsJsonObject("autogg"), AutoGGConfig.class);
-                this.autoTipConfig = gson.fromJson(cfg.getAsJsonObject("autotip"), AutoTipConfig.class);
-
+                HyahmMain.logger.info("Loading data");
+                this.autoGGConfig = gson.fromJson(modules.getAsJsonObject("autogg"), AutoGGConfig.class);
+                this.autoTipConfig = gson.fromJson(modules.getAsJsonObject("autotip"), AutoTipConfig.class);
             }
             catch (Exception e){
                 HyahmMain.logger.debug("Error! Calling sync function to write defaults");

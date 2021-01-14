@@ -30,13 +30,15 @@ public class AutoGGCommands implements ICommand {
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        if(args.length == 0)
+        if(args.length == 0) {
             sender.addChatMessage(new ChatComponentText("[" +
                 Constants.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
                 "]: tick delay (" +
                 HyahmMain.config.autoGGConfig.delay +
                 ")"
             ));
+            return;
+        }
 
         if(args.length != 1)
             return;
