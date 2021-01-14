@@ -1,11 +1,10 @@
 package com.hyahm;
 
 import com.google.gson.*;
-
 import java.io.*;
 
 public class ConfigManager {
-    private File config;
+    private static File configFile;
 
     public class AutoGGConfig {
         public int delay = 10;
@@ -21,9 +20,9 @@ public class ConfigManager {
         public boolean isLevelsEnabled = true;
     }
 
-    public AutoGGConfig autoGGConfig;
-    public AutoTipConfig autoTipConfig;
-    public BedwarsConfig bedwarsConfig;
+    public static AutoGGConfig autoGGConfig;
+    public static AutoTipConfig autoTipConfig;
+    public static BedwarsConfig bedwarsConfig;
 
     public ConfigManager() {
         this.autoGGConfig = new AutoGGConfig();
@@ -33,12 +32,20 @@ public class ConfigManager {
 
     public ConfigManager(File config) {
         this();
+        HyahmMain.logger.debug("ConfigManager initializing with File");
         Gson gson = new Gson();
 
-        this.config = config;
+        this.configFile = config;
+
+        if(configFile == null) {
+            HyahmMain.logger.info("Unexpected null config? WTF happened?");
+            return;
+        }
+
         if(config.exists()) {
             try {
-                FileReader reader = new FileReader(this.config);
+                HyahmMain.logger.debug("Loading config with json");
+                FileReader reader = new FileReader(this.configFile);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 StringBuilder builder = new StringBuilder();
 
@@ -57,21 +64,17 @@ public class ConfigManager {
 
             }
             catch (Exception e){
+                HyahmMain.logger.debug("Error! Calling sync function to write defaults");
                 this.sync();
             }
         }
     }
 
-    public void sync() {
+    public static void sync() {
         Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().create();
         Gson gson = new Gson();
         try {
-            if(config == null) {
-                HyahmMain.logger.info("Unexpected null config");
-                return;
-            }
-
-            config.createNewFile();
+            configFile.createNewFile();
 
             JsonObject root = new JsonObject();
 
@@ -84,7 +87,7 @@ public class ConfigManager {
 
             root.add("modules", modules);
 
-            FileWriter f = new FileWriter(config);
+            FileWriter f = new FileWriter(configFile);
             f.write(gsonBuilder.toJson(root));
             f.close();
         } catch (IOException e) {
