@@ -28,6 +28,8 @@ public class HyahmMain
     public void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting preinit, loading configs      ");
+        logger.debug("So you are in a debug enviroment, eh?");
+        logger.debug("allocated ConfigManager...");
         config = new ConfigManager(event.getSuggestedConfigurationFile());
 
         logger.info("----------------HYAHM----------------  ");

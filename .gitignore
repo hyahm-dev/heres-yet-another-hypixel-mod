@@ -24,11 +24,6 @@ hs_err_pid*
 
 # some gradle things
 *.properties
-.gradle
 
 #Intellij
 .idea
-
-#Bad folders
-run
-build
