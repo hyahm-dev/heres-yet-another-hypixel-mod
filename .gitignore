@@ -24,3 +24,5 @@ hs_err_pid*
 
 # some gradle things
 *.properties
+
+.idea
