@@ -1,38 +1,28 @@
 package com.hyahm.gui;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
+import org.lwjgl.opengl.GL11;
 
-public class ScalableTextRect {
-    private double widthScale;
-    private double lengthScale;
-    private double scalePosX;
-    private double scalePosY;
+public class ScalableTextRect extends ScalableRect{
+    private String text;
+    private FontRenderer fontRenderer;
+    public static final int pixelSize = 10;
 
-    public double getLengthScale() {
-        return lengthScale;
+    public ScalableTextRect(double widthScale, double lengthScale, double scalePosX, double scalePosY, int color) {
+        super(widthScale, lengthScale, scalePosX, scalePosY, color);
+        this.fontRenderer = Minecraft.getMinecraft().fontRendererObj;
     }
 
-    public double getWidthScale() {
-        return widthScale;
-    }
-
-    public void setLengthScale(double lengthScale) {
-        this.lengthScale = lengthScale;
-    }
-
-    public void setWidthScale(double widthScale) {
-        this.widthScale = widthScale;
-    }
-
-    public void render(String buffer) {
-        int sizeY = Minecraft.getMinecraft().displayHeight;
-        int sizeX = Minecraft.getMinecraft().displayWidth;
-        Gui.drawRect((int)(sizeX * scalePosX),
-                (int)(sizeY * scalePosY),
-                (int)(sizeX * scalePosX + sizeX * widthScale),
-                (int)(sizeY * scalePosY + sizeY * scalePosY),
-                0
-        );
+    @Override
+    public void render() {
+        double factor = (double)pixelSize / (double)Minecraft.getMinecraft().displayHeight;
+        float trueScale = (float) (super.lengthScale / factor);
+        super.render();
+        GL11.glPushMatrix();
+        GL11.glScalef(trueScale, trueScale, trueScale);
+        fontRenderer.drawStringWithShadow(text, width, height, 0xFFFFFF); //fr - fontRenderer
+        GL11.glPopMatrix(); //End this matrix
     }
 }
