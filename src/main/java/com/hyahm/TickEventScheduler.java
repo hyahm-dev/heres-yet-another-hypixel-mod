@@ -11,7 +11,7 @@ public class TickEventScheduler {
         Runnable r;
     }
 
-    private HashSet<Task> tasks;
+    private final HashSet<Task> tasks;
 
     TickEventScheduler() {
         tasks = new HashSet<>();

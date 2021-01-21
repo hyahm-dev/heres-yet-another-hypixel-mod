@@ -32,15 +32,9 @@ public class ConfigManager {
 
     public ConfigManager(File config) {
         this();
-        HyahmMain.logger.debug("ConfigManager initializing with File");
         Gson gson = new Gson();
 
         this.configFile = config;
-
-        if(configFile == null) {
-            HyahmMain.logger.info("Unexpected null config? WTF happened?");
-            return;
-        }
 
         if(config.exists()) {
             try {
