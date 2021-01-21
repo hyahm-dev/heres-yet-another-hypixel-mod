@@ -26,7 +26,7 @@ public class ScalableRect extends ScalableGUIElement{
         Gui.drawRect((int)(sizeX * scalePosX),
                 (int)(sizeY * scalePosY),
                 (int)(sizeX * scalePosX + sizeX * widthScale),
-                (int)(sizeY * scalePosY + sizeY * scalePosY),
+                (int)(sizeY * scalePosY + sizeY * lengthScale),
                 this.color
         );
     }

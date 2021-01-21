@@ -15,14 +15,23 @@ public class ScalableTextRect extends ScalableRect{
         this.fontRenderer = Minecraft.getMinecraft().fontRendererObj;
     }
 
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
     @Override
     public void render() {
-        double factor = (double)pixelSize / (double)Minecraft.getMinecraft().displayHeight;
-        float trueScale = (float) (super.lengthScale / factor);
         super.render();
-        GL11.glPushMatrix();
-        GL11.glScalef(trueScale, trueScale, trueScale);
-        fontRenderer.drawStringWithShadow(text, width, height, 0xFFFFFF); //fr - fontRenderer
-        GL11.glPopMatrix(); //End this matrix
+        //double factor = (double)pixelSize / (double)Minecraft.getMinecraft().displayHeight;
+        //float trueScale = (float) (super.lengthScale / factor);
+        //super.render();
+        //GL11.glPushMatrix();
+        //GL11.glScalef(trueScale, trueScale, trueScale);
+        fontRenderer.drawStringWithShadow(text, super.getPixelPosX(), super.getPixelPosY(), 0xFFFFFF); //fr - fontRenderer
+        //GL11.glPopMatrix(); //End this matrix
     }
 }
