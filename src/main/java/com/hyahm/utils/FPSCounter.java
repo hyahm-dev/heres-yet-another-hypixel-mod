@@ -15,7 +15,7 @@ public class FPSCounter {
     ScalableTextRect fps;
 
     public FPSCounter() {
-        fps = new ScalableTextRect(.5, .5, .1, .2, 0xFFFFFFFF);
+        fps = new ScalableTextRect(.5, .5, .1, .1, 0xFFFFFFFF);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -27,8 +27,8 @@ public class FPSCounter {
 
     }
 
-    @SubscribeEvent(priority = EventPriority.NORMAL)
-    public void onPostRender(RenderGameOverlayEvent.Post event) {
+    @SubscribeEvent(priority = EventPriority.LOW)
+    public void onPostRender(RenderGameOverlayEvent.Text event) {
         fps.render();
     }
 }

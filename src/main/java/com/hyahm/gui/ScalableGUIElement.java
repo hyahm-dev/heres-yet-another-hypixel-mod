@@ -1,12 +1,14 @@
 package com.hyahm.gui;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 
 public abstract class ScalableGUIElement {
     protected double widthScale;
     protected double lengthScale;
     protected double scalePosX;
     protected double scalePosY;
+    static final ScaledResolution res = new ScaledResolution(Minecraft.getMinecraft());
 
     public ScalableGUIElement(double widthScale, double lengthScale, double scalePosX, double scalePosY) {
         this.lengthScale = lengthScale;
@@ -48,11 +50,11 @@ public abstract class ScalableGUIElement {
     }
 
     public int getPixelPosX() {
-        return (int) (scalePosX * Minecraft.getMinecraft().displayWidth);
+        return (int) (scalePosX * res.getScaledWidth());
     }
 
     public int getPixelPosY() {
-        return (int) (scalePosY * Minecraft.getMinecraft().displayHeight);
+        return (int) (scalePosY * res.getScaledHeight());
     }
 
     abstract void render();

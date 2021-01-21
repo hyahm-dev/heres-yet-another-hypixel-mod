@@ -31,7 +31,7 @@ public class ScalableTextRect extends ScalableRect{
         //super.render();
         //GL11.glPushMatrix();
         //GL11.glScalef(trueScale, trueScale, trueScale);
-        fontRenderer.drawStringWithShadow(text, super.getPixelPosX(), super.getPixelPosY(), 0xFFFFFF); //fr - fontRenderer
+        fontRenderer.drawString(text, super.getPixelPosX(), super.getPixelPosY(), 0xEEEEEEEE); //fr - fontRenderer
         //GL11.glPopMatrix(); //End this matrix
     }
 }
