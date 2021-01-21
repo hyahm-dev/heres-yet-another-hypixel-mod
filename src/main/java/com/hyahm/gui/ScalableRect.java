@@ -1,7 +1,9 @@
 package com.hyahm.gui;
 
+import com.hyahm.HyahmMain;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.ScaledResolution;
 
 public class ScalableRect extends ScalableGUIElement{
     protected int color;
@@ -20,8 +22,12 @@ public class ScalableRect extends ScalableGUIElement{
 
     @Override
     void render() {
-        int sizeY = Minecraft.getMinecraft().displayHeight;
-        int sizeX = Minecraft.getMinecraft().displayWidth;
+        ScaledResolution r = new ScaledResolution(Minecraft.getMinecraft());
+        int sizeY = r.getScaledHeight();
+        int sizeX = r.getScaledWidth();
+
+        HyahmMain.logger.info(sizeX);
+        HyahmMain.logger.info(sizeY);
 
         Gui.drawRect((int)(sizeX * scalePosX),
                 (int)(sizeY * scalePosY),
