@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 public class LevelDisplay {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onPlayerNameFormat(PlayerEvent.NameFormat event) {
-        if(event.isCanceled() || HyahmMain.config.bedwarsConfig.isLevelsEnabled) {
+        if(event.isCanceled() || ConfigManager.bedwarsConfig.isLevelsEnabled) {
 
         }
     }
