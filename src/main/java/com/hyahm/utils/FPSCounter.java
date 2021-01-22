@@ -33,6 +33,6 @@ public class FPSCounter {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onPostRender(RenderGameOverlayEvent.Text event) {
-        fps.render();
+        //fps.render();
     }
 }

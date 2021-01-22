@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 public class HyahmMain
 {
     public static final String MODID = "hyahm";
-    public static final String VERSION = "1.0-dev";
+    public static final String VERSION = "1.0.1";
     public static ConfigManager config = new ConfigManager();
     public static final Logger logger = LogManager.getLogger("HYAHM");
     public static TickEventScheduler scheduler = new TickEventScheduler();
