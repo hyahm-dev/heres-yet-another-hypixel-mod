@@ -2,6 +2,8 @@ package com.hyahm;
 
 import com.google.gson.*;
 import java.io.*;
+import java.time.Duration;
+import java.time.Instant;
 
 public class ConfigManager {
     private static File configFile;
@@ -38,7 +40,9 @@ public class ConfigManager {
 
         if(config.exists()) {
             try {
-                HyahmMain.logger.debug("Loading config with json");
+                HyahmMain.logger.info("Loading config with json: ");
+                HyahmMain.logger.info("Reading and parsing config file at: " + config.getAbsolutePath());
+                Instant start = Instant.now();
                 FileReader reader = new FileReader(this.configFile);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 StringBuilder builder = new StringBuilder();
@@ -52,13 +56,14 @@ public class ConfigManager {
                 JsonObject cfg = new JsonParser().parse(complete).getAsJsonObject();
 
                 JsonObject modules = cfg.getAsJsonObject("modules");
-
+                Instant end = Instant.now();
+                HyahmMain.logger.debug("Time to load config file: "+ Duration.between(start, end));
                 HyahmMain.logger.info("Loading data");
                 this.autoGGConfig = gson.fromJson(modules.getAsJsonObject("autogg"), AutoGGConfig.class);
                 this.autoTipConfig = gson.fromJson(modules.getAsJsonObject("autotip"), AutoTipConfig.class);
             }
             catch (Exception e){
-                HyahmMain.logger.debug("Error! Calling sync function to write defaults");
+                HyahmMain.logger.error("Error occurred while loading config! Calling sync function to write defaults");
                 this.sync();
             }
         }

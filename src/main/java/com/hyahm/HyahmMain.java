@@ -20,7 +20,7 @@ public class HyahmMain
     public static final String MODID = "hyahm";
     public static final String VERSION = "1.1";
     public static ConfigManager config = new ConfigManager();
-    public static final Logger logger = LogManager.getLogger();
+    public static final Logger logger = LogManager.getLogger("HYAHM");
     public static TickEventScheduler scheduler = new TickEventScheduler();
 
     @Mod.Instance
@@ -30,10 +30,7 @@ public class HyahmMain
     public static void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting preinit, loading configs      ");
-        logger.debug("So you are in a debug enviroment, eh?");
-        logger.debug("allocated ConfigManager...");
         config = new ConfigManager(event.getSuggestedConfigurationFile());
-
         logger.info("----------------HYAHM----------------  ");
     }
 

@@ -43,7 +43,7 @@ public class AutoGGCommands implements ICommand {
         if(args.length != 1)
             return;
 
-        Integer i = Integer.getInteger(args[0]);
+        Integer i = Integer.parseInt(args[0]);
         if(i == null) {
             if(args[0].equals("enable")) {
                 sender.addChatMessage(new ChatComponentText("Autogg is " + Constants.getEnabledString(true)));

@@ -12,7 +12,8 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 
 public class FPSCounter {
-    ScalableTextRect fps;
+    private ScalableTextRect fps;
+    private int tick = 0;
 
     public FPSCounter() {
         fps = new ScalableTextRect(.5, .5, .1, .1, 0xFFFFFFFF);
@@ -23,7 +24,10 @@ public class FPSCounter {
         if(event.isCanceled())
             return;
 
-        fps.setText(Integer.toString(Minecraft.getDebugFPS()));
+        if(tick == 0)
+            fps.setText(Integer.toString(Minecraft.getDebugFPS()));
+        tick++;
+        tick = tick % 30;
 
     }
 
