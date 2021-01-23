@@ -16,7 +16,7 @@ public class FPSCounter {
     private int tick = 0;
 
     public FPSCounter() {
-        fps = new ScalableTextRect(.5, .5, .1, .1, 0xFFFFFFFF);
+
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

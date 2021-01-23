@@ -22,14 +22,26 @@ public class ConfigManager {
         public boolean isLevelsEnabled = true;
     }
 
+    public class FPSConfig {
+        public boolean isEnabled = true;
+        public double scalePosX = .1;
+        public double scalePosY = .1;
+        public double scaleWidth = .1;
+        public double scaleHeight = .1;
+    }
+
     public static AutoGGConfig autoGGConfig;
     public static AutoTipConfig autoTipConfig;
     public static BedwarsConfig bedwarsConfig;
+    public static FPSConfig fpsConfig;
+    public static String token;
 
     public ConfigManager() {
         this.autoGGConfig = new AutoGGConfig();
         this.autoTipConfig = new AutoTipConfig();
         this.bedwarsConfig = new BedwarsConfig();
+        this.fpsConfig = new FPSConfig();
+        this.token = "";
     }
 
     public ConfigManager(File config) {
@@ -61,6 +73,8 @@ public class ConfigManager {
                 HyahmMain.logger.info("Loading data");
                 this.autoGGConfig = gson.fromJson(modules.getAsJsonObject("autogg"), AutoGGConfig.class);
                 this.autoTipConfig = gson.fromJson(modules.getAsJsonObject("autotip"), AutoTipConfig.class);
+                this.fpsConfig = gson.fromJson(modules.getAsJsonObject("fps"), FPSConfig.class);
+                this.token = cfg.getAsJsonPrimitive("token").getAsString();
             }
             catch (Exception e){
                 HyahmMain.logger.error("Error occurred while loading config! Calling sync function to write defaults");
@@ -80,11 +94,14 @@ public class ConfigManager {
             JsonObject modules = new JsonObject();
             JsonElement autoGGElem = gson.toJsonTree(autoGGConfig);
             JsonElement autoTipElem = gson.toJsonTree(autoTipConfig);
+            JsonElement fpsConfigElem = gson.toJsonTree(fpsConfig);
 
             modules.add("autogg", autoGGElem);
             modules.add("autotip", autoTipElem);
+            modules.add("fps", fpsConfigElem);
 
             root.add("modules", modules);
+            root.add("token", new JsonPrimitive(token));
 
             FileWriter f = new FileWriter(configFile);
             f.write(gsonBuilder.toJson(root));
