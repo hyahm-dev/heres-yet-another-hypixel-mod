@@ -5,10 +5,10 @@ import com.hyahm.autogg.AutoGGEvents;
 import com.hyahm.autotip.AutoTipCommands;
 import com.hyahm.autotip.AutoTipEvent;
 import com.hyahm.utils.FPSCounter;
-import com.hyahm.utils.FPSCounter;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -30,6 +30,8 @@ public class HyahmMain
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
+        logger.info("Setting up reflections...              ");
+        ObfuscationReflectionHelper.getPrivateValue(net.minecraft.crash.CrashReport.class, null, "");
         logger.info("Starting preinit, loading configs      ");
         config = new ConfigManager(event.getSuggestedConfigurationFile());
         logger.info("----------------HYAHM----------------  ");
@@ -61,11 +63,14 @@ public class HyahmMain
         MinecraftForge.EVENT_BUS.register(new FPSCounter());
         logger.info("Loading module event: basic game overlay: done!");
 
+
         logger.info("----------------HYAHM----------------  ");
+        throw new RuntimeException("ONII-chan");
     }
 
     @Mod.EventHandler
     public static void postInit(FMLPostInitializationEvent event) {
+
 
     }
 

@@ -2,10 +2,6 @@ package com.hyahm.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
-import org.lwjgl.opengl.GL11;
-
-import java.awt.*;
 
 public class ScalableTextRect extends ScalableRect{
     private String text;

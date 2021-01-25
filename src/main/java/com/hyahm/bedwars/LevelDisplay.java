@@ -1,7 +1,6 @@
 package com.hyahm.bedwars;
 
 import com.hyahm.ConfigManager;
-import com.hyahm.HyahmMain;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

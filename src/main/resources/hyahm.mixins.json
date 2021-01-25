@@ -1,0 +1,9 @@
+{
+  "required": true,
+  "package": "your.package.name.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "hyahm.refmap.json",
+  "mixins": [
+  ],
+  "minVersion": "0.8"
+}

@@ -4,7 +4,6 @@ import com.hyahm.ConfigManager;
 import com.hyahm.Constants;
 import com.hyahm.HyahmMain;
 import net.minecraft.client.Minecraft;
-import net.minecraftforge.fml.client.config.ConfigGuiType;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;

@@ -2,7 +2,6 @@ package com.hyahm.autogg;
 
 import com.hyahm.ConfigManager;
 import com.hyahm.Constants;
-import com.hyahm.HyahmMain;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
