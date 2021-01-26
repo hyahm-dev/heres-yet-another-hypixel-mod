@@ -14,7 +14,6 @@ public class AutoTipEvent {
     @SubscribeEvent(priority = EventPriority.LOW)
     void onTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
-            HyahmMain.logger.info(tickCounter);
             if (event.isCanceled() || !ConfigManager.autoTipConfig.isEnabled)
                 return;
             if(!Constants.isHypixel())

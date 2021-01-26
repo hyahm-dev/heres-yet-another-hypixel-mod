@@ -2,6 +2,11 @@ package com.hyahm;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.EnumChatFormatting;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
 
 import java.util.Arrays;
 import java.util.List;

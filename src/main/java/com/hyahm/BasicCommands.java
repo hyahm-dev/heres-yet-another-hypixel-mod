@@ -72,7 +72,7 @@ public class BasicCommands {
 
         @Override
         public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-            Minecraft.getMinecraft().crashed(new CrashReport("crash go burrr", new Throwable()));
+            Minecraft.getMinecraft().crashed(new CrashReport("You asked for it!", new Throwable()));
         }
 
         @Override
