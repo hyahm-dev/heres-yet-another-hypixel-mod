@@ -1,5 +1,6 @@
 package com.hyahm.utils;
 
+import com.hyahm.ConfigManager;
 import com.hyahm.gui.ScalableTextRect;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -13,7 +14,7 @@ public class FPSCounter {
     private int tick = 0;
 
     public FPSCounter() {
-
+        fps = new ScalableTextRect(.1, .1, .1, .1, 0xFFFFFFFF);
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

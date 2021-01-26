@@ -19,7 +19,7 @@ import org.apache.logging.log4j.Logger;
 public class HyahmMain
 {
     public static final String MODID = "hyahm";
-    public static final String VERSION = "1.0-dev";
+    public static final String VERSION = "1.0.1-dev";
     public static ConfigManager config = new ConfigManager();
     public static final Logger logger = LogManager.getLogger("HYAHM");
     public static TickEventScheduler scheduler = new TickEventScheduler();
@@ -31,7 +31,6 @@ public class HyahmMain
     public static void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Setting up reflections...              ");
-        ObfuscationReflectionHelper.getPrivateValue(net.minecraft.crash.CrashReport.class, null, "");
         logger.info("Starting preinit, loading configs      ");
         config = new ConfigManager(event.getSuggestedConfigurationFile());
         logger.info("----------------HYAHM----------------  ");
@@ -50,6 +49,10 @@ public class HyahmMain
         ClientCommandHandler.instance.registerCommand(new AutoTipCommands());
         logger.info("Loading module command: autotip: done!");
 
+        logger.info("Loading module command: core");
+        ClientCommandHandler.instance.registerCommand(new BasicCommands.Crash());
+        logger.info("Loading module command: core: done!");
+
         logger.info("Starting init, loading handlers        ");
         logger.info("Loading module event: autogg");
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
@@ -64,8 +67,8 @@ public class HyahmMain
         logger.info("Loading module event: basic game overlay: done!");
 
 
+
         logger.info("----------------HYAHM----------------  ");
-        throw new RuntimeException("ONII-chan");
     }
 
     @Mod.EventHandler
