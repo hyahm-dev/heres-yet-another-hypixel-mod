@@ -57,5 +57,11 @@ public abstract class ScalableGUIElement {
         return (int) (scalePosY * res.getScaledHeight());
     }
 
-    abstract void render();
+    public void setPixelPosX(int pixelPosX) { this.scalePosY = (double)pixelPosX / (double)res.getScaledWidth(); }
+
+    public void setPixelPosY(int pixelPosY) {
+        this.scalePosY = (double)pixelPosY / (double)res.getScaledHeight();
+    }
+
+    public abstract void render();
 }

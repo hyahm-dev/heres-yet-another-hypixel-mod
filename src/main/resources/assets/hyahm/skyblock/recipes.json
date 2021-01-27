@@ -1,0 +1,13 @@
+{
+  "meta": {
+    "methods": {
+      "crafting": 0,
+      "purchase": 1
+    }
+  },
+  "items": [
+    {
+      "method": 0
+    }
+  ]
+}
