@@ -1,6 +1,7 @@
 package com.hyahm.utils;
 
 import com.hyahm.HyahmMain;
+import com.hyahm.gui.CompoundWindow;
 import net.minecraft.client.gui.Gui;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -14,6 +15,11 @@ public class Keystrokes {
     long ticks = 0;
     List<Long> rightClicks = new ArrayList<>();
     List<Long> leftClicks = new ArrayList<>();
+    CompoundWindow ui = new CompoundWindow();
+
+    public Keystrokes() {
+        ui.addWindow(new );
+    }
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onTick(TickEvent.ClientTickEvent event) {
@@ -28,11 +34,12 @@ public class Keystrokes {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onPostRender(RenderGameOverlayEvent.Text event) {
+        /*
         Gui.drawRect(22, 4, 38, 20, 0x40FFFFFF);
         Gui.drawRect(4, 22, 20, 38, 0x40FFFFFF);
         Gui.drawRect(22, 22, 38, 38, 0x40FFFFFF);
         Gui.drawRect(40, 22, 56, 38, 0x40FFFFFF);
-        Gui.drawRect(4, 40,28, 56, 0x40FFFFFF);
+        Gui.drawRect(4, 40,28, 56, 0x40FFFFFF);*/
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
