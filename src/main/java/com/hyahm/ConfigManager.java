@@ -6,7 +6,7 @@ import java.time.Duration;
 import java.time.Instant;
 
 public class ConfigManager {
-    private static File configFile;
+    private File configFile;
 
     public class AutoGGConfig {
         public int delay = 10;
@@ -30,18 +30,36 @@ public class ConfigManager {
         public double scaleHeight = .1;
     }
 
-    public static AutoGGConfig autoGGConfig;
-    public static AutoTipConfig autoTipConfig;
-    public static BedwarsConfig bedwarsConfig;
-    public static FPSConfig fpsConfig;
-    public static String token;
+    public class CPSConfig {
+        public boolean isEnabledRC = true;
+        public double scalePosXRC = .1;
+        public double scalePosYRC = .1;
+        public double scaleWidthRC = .1;
+        public double scaleHeightRC = .1;
+
+        public boolean isEnabledLC = true;
+        public double scalePosXLC = .1;
+        public double scalePosYLC = .1;
+        public double scaleWidthLC = .1;
+        public double scaleHeightLC = .1;
+
+        public long setRemoveTickDelay = 20;
+    }
+
+    public AutoGGConfig autoGGConfig;
+    public AutoTipConfig autoTipConfig;
+    public BedwarsConfig bedwarsConfig;
+    public FPSConfig fpsConfig;
+    public CPSConfig cpsConfig;
+    public String token;
 
     public ConfigManager() {
-        this.autoGGConfig = new AutoGGConfig();
-        this.autoTipConfig = new AutoTipConfig();
-        this.bedwarsConfig = new BedwarsConfig();
-        this.fpsConfig = new FPSConfig();
-        this.token = "";
+        autoGGConfig = new AutoGGConfig();
+        autoTipConfig = new AutoTipConfig();
+        bedwarsConfig = new BedwarsConfig();
+        fpsConfig = new FPSConfig();
+        cpsConfig = new CPSConfig();
+        token = "";
     }
 
     public ConfigManager(File config) {
@@ -55,7 +73,7 @@ public class ConfigManager {
                 HyahmMain.logger.info("Loading config with json: ");
                 HyahmMain.logger.info("Reading and parsing config file at: " + config.getAbsolutePath());
                 Instant start = Instant.now();
-                FileReader reader = new FileReader(this.configFile);
+                FileReader reader = new FileReader(configFile);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 StringBuilder builder = new StringBuilder();
 
@@ -71,22 +89,29 @@ public class ConfigManager {
                 Instant end = Instant.now();
                 HyahmMain.logger.debug("Time to load config file: "+ Duration.between(start, end));
                 HyahmMain.logger.info("Loading data");
-                this.autoGGConfig = gson.fromJson(modules.getAsJsonObject("autogg"), AutoGGConfig.class);
-                this.autoTipConfig = gson.fromJson(modules.getAsJsonObject("autotip"), AutoTipConfig.class);
-                this.fpsConfig = gson.fromJson(modules.getAsJsonObject("fps"), FPSConfig.class);
-                this.token = cfg.getAsJsonPrimitive("token").getAsString();
+                if(modules.has("autogg"))
+                    autoGGConfig = gson.fromJson(modules.getAsJsonObject("autogg"), AutoGGConfig.class);
+                if(modules.has("autotip"))
+                    autoTipConfig = gson.fromJson(modules.getAsJsonObject("autotip"), AutoTipConfig.class);
+                if(modules.has("fps"))
+                    fpsConfig = gson.fromJson(modules.getAsJsonObject("fps"), FPSConfig.class);
+                if(modules.has("keystrokes"))
+                    cpsConfig = gson.fromJson(modules.getAsJsonObject("keystrokes"), CPSConfig.class);
+
+                token = cfg.getAsJsonPrimitive("token").getAsString();
             }
             catch (Exception e){
                 HyahmMain.logger.error("Error occurred while loading config! Calling sync function to write defaults");
-                this.sync();
             }
+            sync();
         }
     }
 
-    public static void sync() {
+    public void sync() {
         Gson gsonBuilder = new GsonBuilder().setPrettyPrinting().create();
         Gson gson = new Gson();
         try {
+            HyahmMain.logger.info("Syncing configs...");
             configFile.createNewFile();
 
             JsonObject root = new JsonObject();
@@ -95,13 +120,16 @@ public class ConfigManager {
             JsonElement autoGGElem = gson.toJsonTree(autoGGConfig);
             JsonElement autoTipElem = gson.toJsonTree(autoTipConfig);
             JsonElement fpsConfigElem = gson.toJsonTree(fpsConfig);
+            JsonElement keystrokesConfigElem = gson.toJsonTree(cpsConfig);
 
             modules.add("autogg", autoGGElem);
             modules.add("autotip", autoTipElem);
             modules.add("fps", fpsConfigElem);
+            modules.add("keystrokes", keystrokesConfigElem);
 
             root.add("modules", modules);
             root.add("token", new JsonPrimitive(token));
+            HyahmMain.logger.info(gsonBuilder.toJson(root));
 
             FileWriter f = new FileWriter(configFile);
             f.write(gsonBuilder.toJson(root));

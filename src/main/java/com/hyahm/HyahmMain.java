@@ -4,16 +4,17 @@ import com.hyahm.autogg.AutoGGCommands;
 import com.hyahm.autogg.AutoGGEvents;
 import com.hyahm.autotip.AutoTipCommands;
 import com.hyahm.autotip.AutoTipEvent;
-import com.hyahm.utils.FPSCounter;
+import com.hyahm.utils.Keystrokes;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.security.Key;
 
 @Mod(modid = HyahmMain.MODID, version = HyahmMain.VERSION, clientSideOnly = true)
 public class HyahmMain
@@ -63,7 +64,8 @@ public class HyahmMain
         logger.info("Loading module event: autotip: done!");
 
         logger.info("Loading module event: basic game overlay");
-        MinecraftForge.EVENT_BUS.register(new FPSCounter());
+        MinecraftForge.EVENT_BUS.register(new Keystrokes() {
+        });
         logger.info("Loading module event: basic game overlay: done!");
 
 

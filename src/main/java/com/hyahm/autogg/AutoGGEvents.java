@@ -1,6 +1,6 @@
 package com.hyahm.autogg;
 
-import com.hyahm.ConfigManager;
+import com.hyahm.HyahmMain;
 import com.hyahm.Constants;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
@@ -14,7 +14,7 @@ public class AutoGGEvents {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatEvent(ClientChatReceivedEvent event)
     {
-        if(event.isCanceled() || !ConfigManager.autoGGConfig.isEnabled)
+        if(event.isCanceled() || !HyahmMain.config.autoGGConfig.isEnabled)
             return;
 
         // verify its both a server and it is hypixel
@@ -36,7 +36,7 @@ public class AutoGGEvents {
         }
 
         // schedule da task
-        enqueueTime = ConfigManager.autoGGConfig.delay;
+        enqueueTime = HyahmMain.config.autoGGConfig.delay;
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)

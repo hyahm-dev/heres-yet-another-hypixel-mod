@@ -1,20 +1,21 @@
 package com.hyahm.utils;
 
-import com.hyahm.ConfigManager;
+/*import com.hyahm.ConfigManager;
 import com.hyahm.gui.ScalableTextRect;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
+import com.hyahm.gui.windows.MCWindow;
 
 
 public class FPSCounter {
-    private ScalableTextRect fps;
+    private ScalableTextRect<MCWindow> fps;
     private int tick = 0;
 
     public FPSCounter() {
-        fps = new ScalableTextRect(.1, .1, .1, .1, 0xFFFFFFFF);
+        fps = new ScalableTextRect<MCWindow>(.1, .1, .1, .1, 0xFFFFFFFF, new MCWindow());
     }
 
     @SubscribeEvent(priority = EventPriority.LOW)
@@ -31,6 +32,8 @@ public class FPSCounter {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onPostRender(RenderGameOverlayEvent.Text event) {
-        fps.render();
+        if(ConfigManager.fpsConfig.isEnabled)
+            fps.render();
     }
 }
+*/
