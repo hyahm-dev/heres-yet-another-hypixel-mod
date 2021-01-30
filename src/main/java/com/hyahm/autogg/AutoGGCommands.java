@@ -1,7 +1,6 @@
 package com.hyahm.autogg;
-
-import com.hyahm.ConfigManager;
 import com.hyahm.Constants;
+import com.hyahm.HyahmMain;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -13,7 +12,7 @@ import java.util.List;
 
 public class AutoGGCommands implements ICommand {
     @Override
-    public String getCommandName() {
+    public String getCommandName() { // returns the name of the command to use
         return "autogg";
     }
 
@@ -24,39 +23,43 @@ public class AutoGGCommands implements ICommand {
 
     @Override
     public List<String> getCommandAliases() {
-        return Arrays.asList("gg", "agg");
+        return Arrays.asList("gg", "agg"); // returns alternative commands
     }
 
     @Override
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+        // check if it has 0 args
         if(args.length == 0) {
+            // display current config
             sender.addChatMessage(new ChatComponentText("[" +
-                Constants.getEnabledString(ConfigManager.autoGGConfig.isEnabled) +
+                Constants.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
                 "]: tick delay (" +
-                ConfigManager.autoGGConfig.delay +
+                HyahmMain.config.autoGGConfig.delay +
                 ")"
             ));
             return;
         }
 
+        // if it doesnt have 1 arg, then it is invalid
         if(args.length != 1)
             return;
+
+        // attempts to convert the arg to a int, if not, check if it is "enable" or "disable"
         try {
-            Integer i = Integer.parseInt(args[0]);
-            ConfigManager.autoGGConfig.delay = i;
-            ConfigManager.sync();
-            sender.addChatMessage(new ChatComponentText("Delay set to: " + ConfigManager.autoGGConfig.delay + " ticks"));
+            HyahmMain.config.autoGGConfig.delay = Integer.parseInt(args[0]);
+            HyahmMain.config.sync();
+            sender.addChatMessage(new ChatComponentText("Delay set to: " + HyahmMain.config.autoGGConfig.delay + " ticks"));
         }
         catch(NumberFormatException e) {
             if (args[0].equals("enable")) {
                 sender.addChatMessage(new ChatComponentText("Autogg is " + Constants.getEnabledString(true)));
-                ConfigManager.autoGGConfig.isEnabled = true;
+                HyahmMain.config.autoGGConfig.isEnabled = true;
             } else if (args[0].equals("disable")) {
                 sender.addChatMessage(new ChatComponentText("Autogg is " + Constants.getEnabledString(false)));
-                ConfigManager.autoGGConfig.isEnabled = false;
+                HyahmMain.config.autoGGConfig.isEnabled = false;
             } else
                 sender.addChatMessage(new ChatComponentText("Invalid Command!"));
-            ConfigManager.sync();
+            HyahmMain.config.sync();
             return;
         }
     }

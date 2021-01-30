@@ -1,6 +1,5 @@
 package com.hyahm.autotip;
 
-import com.hyahm.ConfigManager;
 import com.hyahm.Constants;
 import com.hyahm.HyahmMain;
 import net.minecraft.client.Minecraft;
@@ -14,18 +13,16 @@ public class AutoTipEvent {
     @SubscribeEvent(priority = EventPriority.LOW)
     void onTick(TickEvent.ClientTickEvent event) {
         if (event.phase == TickEvent.Phase.END) {
-            if (event.isCanceled() || !ConfigManager.autoTipConfig.isEnabled)
+            if (event.isCanceled() || !HyahmMain.config.autoTipConfig.isEnabled)
                 return;
             if(!Constants.isHypixel())
                 return;
 
             tickCounter++;
-            tickCounter = tickCounter % ConfigManager.autoTipConfig.delay;
+            tickCounter = tickCounter % HyahmMain.config.autoTipConfig.delay;
             
-            if (tickCounter == 0) {
+            if (tickCounter == 0)
                 Minecraft.getMinecraft().thePlayer.sendChatMessage("/tip all");
-                HyahmMain.logger.info("triggered");
-            }
         }
     }
 }
