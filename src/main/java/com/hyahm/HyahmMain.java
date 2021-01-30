@@ -31,7 +31,6 @@ public class HyahmMain
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
-        logger.info("Setting up reflections...              ");
         logger.info("Starting preinit, loading configs      ");
         config = new ConfigManager(event.getSuggestedConfigurationFile());
         logger.info("----------------HYAHM----------------  ");

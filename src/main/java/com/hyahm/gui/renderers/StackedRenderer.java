@@ -1,6 +1,8 @@
 package com.hyahm.gui.renderers;
 
 import javafx.util.Pair;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
 
 import javax.swing.*;
@@ -8,11 +10,13 @@ import java.util.Stack;
 
 public class StackedRenderer implements IRenderer{
     Stack<Pair<Integer, Integer>> pos;
+    FontRenderer f;
     int x, y;
 
     public StackedRenderer() {
         x = y = 0;
         pos = new Stack<>();
+        f = Minecraft.getMinecraft().fontRendererObj;
     }
 
     public void draw(int x, int y, int width, int height, int color) {
@@ -22,6 +26,11 @@ public class StackedRenderer implements IRenderer{
                 this.y + y + height,
                 color
         );
+    }
+
+    @Override
+    public void drawString(String t, int x, int y, int color, boolean shadow) {
+        f.drawString(t, this.x + x, this.y + y, color, shadow);
     }
 
     public void push(int x, int y) {
@@ -38,8 +47,8 @@ public class StackedRenderer implements IRenderer{
     }
 
     public void drawAndPush(int x, int y, int width, int height, int color) {
-        push(x, y);
         draw(x, y, width, height, color);
+        push(x, y);
     }
 
 

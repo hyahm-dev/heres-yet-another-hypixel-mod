@@ -2,27 +2,29 @@ package com.hyahm.gui;
 
 import com.hyahm.gui.renderers.IRenderer;
 
-public class RectangleWindow implements IWindow{
-    public int x, y, width, height;
+public class TextWindow implements IWindow {
     protected IRenderer renderer;
     public int color;
+    public int x, y;
+    public String text;
+    public boolean shadow;
 
-    public RectangleWindow() {
-        x = y = width = height = 0;
+    public TextWindow() {
+        color = 0;
         renderer = null;
     }
 
-    public RectangleWindow(int x, int y, int width, int length, int color) {
+    public TextWindow(String text, int x, int y, int color, boolean shadow) {
+        this.text = text;
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = length;
         this.color = color;
+        this.shadow = shadow;
     }
 
     @Override
     public void render() {
-        renderer.draw(x, y, width, height, color);
+        renderer.drawString(text, x, y, color, shadow);
     }
 
     @Override

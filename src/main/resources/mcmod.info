@@ -1,16 +1,16 @@
 [
-{
-  "modid": "hyahm",
-  "name": "Here's Yet Another Hypixel Mod",
-  "description": "A utility mod for hypixel",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["HYAHM-dev"],
-  "credits": "The dev team",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "hyahm",
+    "name": "Here's Yet Another Hypixel Mod",
+    "description": "A utility mod for hypixel",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["HYAHM-dev"],
+    "credits": "The dev team",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]
