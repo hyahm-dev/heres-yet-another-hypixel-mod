@@ -1,11 +1,9 @@
 package com.hyahm.gui.renderers;
 
-import javafx.util.Pair;
+import com.hyahm.utils.Pair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
-
-import javax.swing.*;
 import java.util.Stack;
 
 public class StackedRenderer implements IRenderer{
@@ -43,7 +41,7 @@ public class StackedRenderer implements IRenderer{
     public void pop() {
         Pair<Integer, Integer> i = pos.pop();
         this.x -= i.getKey();
-        this.y -= i.getValue();
+        this.y -= i.getVal();
     }
 
     public void drawAndPush(int x, int y, int width, int height, int color) {
