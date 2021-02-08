@@ -2,36 +2,37 @@ package com.hyahm.hooks;
 
 import com.hyahm.Constants;
 import com.hyahm.HyahmMain;
-import javafx.util.Pair;
+import com.hyahm.utils.Pair;
+import com.hyahm.utils.ValueComparePair;
 import net.minecraftforge.client.event.ClientChatReceivedEvent;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import java.lang.reflect.Array;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.regex.Pattern;
 
 public class HookHandler {
-    List<Pair<Object, List<Method>>> hooks;
+    List<Pair<Object, Queue<ValueComparePair<Method, Integer>>>> hooks;
 
     public HookHandler() {
         hooks = new ArrayList<>();
     }
 
     public void hook(Object r) {
-        List<Method> al = new ArrayList<>();
+        Queue<ValueComparePair<Method, Integer>> al = new PriorityQueue<>();
         for (Method m: r.getClass().getDeclaredMethods()) {
             if(!m.isAnnotationPresent(Hook.class))
-                throw new IllegalArgumentException("unable to die");
+                continue;
             if(m.getParameterTypes().length != 1)
                 throw new IllegalArgumentException("bruh");
             if(!m.getParameterTypes()[0].isAnnotationPresent(Event.class))
                 throw new IllegalArgumentException("a");
 
-            al.add(m);
+            al.add(new ValueComparePair<>(m, m.getAnnotation(Hook.class).level()));
         }
 
         hooks.add(new Pair<>(r, al));
@@ -40,9 +41,6 @@ public class HookHandler {
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onChatEvent(ClientChatReceivedEvent event)
     {
-        if(!HyahmMain.config.autoGGConfig.isEnabled)
-            return;
-
         // verify its both a server and it is hypixel
         if(!Constants.isHypixel())
             return;
@@ -61,11 +59,11 @@ public class HookHandler {
                 return;
         }
 
-        for (Pair<Object, List<Method>> handler: hooks) {
-            for (Method m : handler.getValue()) {
-                if (m.getParameterTypes()[0] == GameEndEvent.class) {
+        for (Pair<Object, Queue<ValueComparePair<Method, Integer>>> handler: hooks) {
+            for (Pair<Method, Integer> m : handler.getVal()) {
+                if (m.getKey().getParameterTypes()[0] == GameEndEvent.class) {
                     try {
-                        m.invoke(handler.getKey(), new GameEndEvent());
+                        m.getKey().invoke(handler.getKey(), new GameEndEvent());
                     }
                     catch (Exception e) {
                         HyahmMain.logger.error("Failed to invoke target", e);

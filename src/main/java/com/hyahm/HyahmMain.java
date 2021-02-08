@@ -5,6 +5,7 @@ import com.hyahm.modules.autogg.AutoGGEvents;
 import com.hyahm.modules.autotip.AutoTipCommands;
 import com.hyahm.modules.autotip.AutoTipEvent;
 import com.hyahm.hooks.HookHandler;
+import com.hyahm.modules.stats.NickChecker;
 import com.hyahm.modules.utils.Keystrokes;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,6 +43,8 @@ public class HyahmMain
         logger.info("running mod core init");
         MinecraftForge.EVENT_BUS.register(scheduler);
         MinecraftForge.EVENT_BUS.register(HOOK_HANDLER);
+        logger.info("mod core init done!");
+
         logger.info("Starting init, loading commands        ");
 
         logger.info("Loading module command: autogg");
@@ -52,13 +55,14 @@ public class HyahmMain
         ClientCommandHandler.instance.registerCommand(new AutoTipCommands());
         logger.info("Loading module command: autotip: done!");
 
-        logger.info("Loading module command: core");
-        ClientCommandHandler.instance.registerCommand(new BasicCommands.Crash());
-        logger.info("Loading module command: core: done!");
+        logger.info("Loading module command: stats");
+        ClientCommandHandler.instance.registerCommand(new NickChecker());
+        logger.info("Loading module command: stats: done!");
 
         logger.info("Starting init, loading handlers        ");
         logger.info("Loading module event: autogg");
         MinecraftForge.EVENT_BUS.register(new AutoGGEvents());
+        HyahmMain.HOOK_HANDLER.hook(new AutoGGEvents());
         logger.info("Loading module command: autogg: done!");
 
         logger.info("Loading module event: autotip");
