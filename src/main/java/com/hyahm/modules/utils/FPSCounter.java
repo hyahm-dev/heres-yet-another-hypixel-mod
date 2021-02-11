@@ -1,4 +1,4 @@
-package com.hyahm.utils;
+package com.hyahm.modules.utils;
 
 /*import com.hyahm.ConfigManager;
 import com.hyahm.gui.ScalableTextRect;
@@ -25,8 +25,8 @@ public class FPSCounter {
 
         if(tick == 0)
             fps.setText(Integer.toString(Minecraft.getDebugFPS()));
-        tick++;
-        tick = tick % 30;
+        tick = tick % 30;        tick++;
+
 
     }
 

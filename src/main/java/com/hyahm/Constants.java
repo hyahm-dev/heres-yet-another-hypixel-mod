@@ -41,6 +41,8 @@ public class Constants {
         Pattern.compile("\\.get(SPECTATOR) (?<rk>\\.get(.+) )?(?<pl>\\S{1,16}): (?<msg>.*)"),
     };
 
+    public static Pattern matchNick = Pattern.compile("(^[^_]+_[^_]+_[^_]+$)");
+
     public static Pattern removeColor = Pattern.compile("(?i)" + '\u00A7' + "[0-9A-FK-OR]");
 
     public static boolean isHypixel() {

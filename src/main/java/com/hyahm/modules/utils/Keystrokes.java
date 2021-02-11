@@ -1,8 +1,7 @@
-package com.hyahm.utils;
+package com.hyahm.modules.utils;
 
 import com.hyahm.HyahmMain;
 import com.hyahm.gui.CompoundWindow;
-import com.hyahm.gui.RectangleWindow;
 import com.hyahm.gui.TextWindow;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.MouseEvent;
@@ -76,8 +75,8 @@ public class Keystrokes {
 
 
         // sets some values
-        ui.getCompoundWindow("LC").getTextWindow("text").y = y;
-        ui.getCompoundWindow("RC").getTextWindow("text").y = y;
+        ui.getCompoundWindow("LC").getTextWindow("text").y = 8;
+        ui.getCompoundWindow("RC").getTextWindow("text").y = 8;
         ui.getCompoundWindow("LC").getTextWindow("text").color = 0x60FFFFFF;
         ui.getCompoundWindow("RC").getTextWindow("text").color = 0x60FFFFFF;
     }
