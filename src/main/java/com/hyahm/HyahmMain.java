@@ -2,6 +2,7 @@ package com.hyahm;
 
 import com.hyahm.modules.autogg.AutoGGCommands;
 import com.hyahm.modules.autogg.AutoGGEvents;
+import com.hyahm.modules.autoplay.AutoPlayEvents;
 import com.hyahm.modules.autotip.AutoTipCommands;
 import com.hyahm.modules.autotip.AutoTipEvent;
 import com.hyahm.hooks.HookHandler;
@@ -72,6 +73,8 @@ public class HyahmMain
         logger.info("Loading module event: basic game overlay");
         MinecraftForge.EVENT_BUS.register(new Keystrokes());
         logger.info("Loading module event: basic game overlay: done!");
+
+        HyahmMain.HOOK_HANDLER.hook(new AutoPlayEvents());
 
         logger.info("----------------HYAHM----------------  ");
     }

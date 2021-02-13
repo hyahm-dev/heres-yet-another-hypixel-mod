@@ -60,10 +60,11 @@ public class HookHandler {
         }
 
         for (Pair<Object, Queue<ValueComparePair<Method, Integer>>> handler: hooks) {
+            GameEndEvent gameEndEvent = new GameEndEvent(event.message.getUnformattedText());
             for (Pair<Method, Integer> m : handler.getVal()) {
-                if (m.getKey().getParameterTypes()[0] == GameEndEvent.class) {
+                if (m.getKey().getParameterTypes()[0] == GameEndEvent.class && !gameEndEvent.isCancelled()) {
                     try {
-                        m.getKey().invoke(handler.getKey(), new GameEndEvent());
+                        m.getKey().invoke(handler.getKey(), gameEndEvent);
                     }
                     catch (Exception e) {
                         HyahmMain.logger.error("Failed to invoke target", e);

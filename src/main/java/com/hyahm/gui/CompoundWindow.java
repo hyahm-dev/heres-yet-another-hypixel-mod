@@ -75,7 +75,7 @@ public class CompoundWindow extends RectangleWindow implements IWindow {
 
     @Override
     public void render() {
-        renderer.drawAndPush(super.x, super.y, super.width, super.height, super.color);
+        renderer.drawAndPush(super.x, super.y, super.width, super.height, super.color, super.scale);
         for (Map.Entry<String, IWindow> entry : subWindows.entrySet()) {
             entry.getValue().render();
         }

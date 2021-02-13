@@ -6,6 +6,7 @@ public class TextWindow implements IWindow {
     protected IRenderer renderer;
     public int color;
     public int x, y;
+    public double scale;
     public String text;
     public boolean shadow;
 
@@ -15,16 +16,21 @@ public class TextWindow implements IWindow {
     }
 
     public TextWindow(String text, int x, int y, int color, boolean shadow) {
+        this(text, x, y, color, shadow, 1);
+    }
+
+    public TextWindow(String text, int x, int y, int color, boolean shadow, double scale) {
         this.text = text;
         this.x = x;
         this.y = y;
         this.color = color;
         this.shadow = shadow;
+        this.scale = scale;
     }
 
     @Override
     public void render() {
-        renderer.drawString(text, x, y, color, shadow);
+        renderer.drawString(text, x, y, color, shadow, scale);
     }
 
     @Override

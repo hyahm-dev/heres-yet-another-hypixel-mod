@@ -69,8 +69,35 @@ public class Keystrokes {
         ));
 
         // creates the left and right click keys
-        ui.addWindow("LC", new CompoundWindow(4, 40 , 25, 16, 0x40FFFFFF).addWindow("text", new TextWindow()));
-        ui.addWindow("RC", new CompoundWindow(31, 40 , 25, 16, 0x40FFFFFF).addWindow("text", new TextWindow()));
+        ui.addWindow("LC", new CompoundWindow(4, 40 , 25, 16, 0x40FFFFFF).addWindow("text", new TextWindow(
+                "0",
+                0,
+                y,
+                0x60FFFFFF,
+                false,
+                0.5
+        )).addWindow("name", new TextWindow(
+                "LMB",
+                (24 - Minecraft.getMinecraft().fontRendererObj.getStringWidth("LMB")) / 2 + 1,
+                y,
+                0x60FFFFFF,
+                false
+        )));
+
+        ui.addWindow("RC", new CompoundWindow(31, 40 , 25, 16, 0x40FFFFFF).addWindow("text", new TextWindow(
+                "0",
+                0,
+                y,
+                0x60FFFFFF,
+                false,
+                0.5
+        )).addWindow("name", new TextWindow(
+                "RMB",
+                (24 - Minecraft.getMinecraft().fontRendererObj.getStringWidth("RMB")) / 2 + 1,
+                y,
+                0x60FFFFFF,
+                false
+        )));
 
 
 
@@ -103,8 +130,8 @@ public class Keystrokes {
 
         TextWindow tlc = ui.getCompoundWindow("LC").getTextWindow("text");
         TextWindow trc = ui.getCompoundWindow("RC").getTextWindow("text");
-        tlc.x = (24 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(tlc.text)) / 2;
-        trc.x = (24 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(trc.text)) / 2;
+        tlc.x = (24 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(tlc.text) / 2) / 2;
+        trc.x = (24 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(trc.text) / 2) / 2;
 
         ui.render();
 
@@ -118,7 +145,7 @@ public class Keystrokes {
             case 0:
                 leftClicks.add(ticks);
                 break;
-            case 2:
+            case 1:
                 rightClicks.add(ticks);
         }
     }
