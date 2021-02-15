@@ -1,7 +1,5 @@
 package com.hyahm.utils;
 
-import org.jetbrains.annotations.NotNull;
-
 public class Pair <K, V> {
     private K key;
     private V val;
@@ -24,11 +22,11 @@ public class Pair <K, V> {
         return val;
     }
 
-    public void setKey(@NotNull K k ) {
+    public void setKey(K k ) {
         this.key = k;
     }
 
-    public void setVal(@NotNull V v) {
+    public void setVal(V v) {
         this.val = v;
     }
 

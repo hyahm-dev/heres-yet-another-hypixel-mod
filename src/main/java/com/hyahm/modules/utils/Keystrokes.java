@@ -72,7 +72,7 @@ public class Keystrokes {
         ui.addWindow("LC", new CompoundWindow(4, 40 , 25, 16, 0x40FFFFFF).addWindow("text", new TextWindow(
                 "0",
                 0,
-                y,
+                y + Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT,
                 0x60FFFFFF,
                 false,
                 0.5
@@ -87,7 +87,7 @@ public class Keystrokes {
         ui.addWindow("RC", new CompoundWindow(31, 40 , 25, 16, 0x40FFFFFF).addWindow("text", new TextWindow(
                 "0",
                 0,
-                y,
+                y + Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT,
                 0x60FFFFFF,
                 false,
                 0.5
@@ -102,8 +102,6 @@ public class Keystrokes {
 
 
         // sets some values
-        ui.getCompoundWindow("LC").getTextWindow("text").y = 8;
-        ui.getCompoundWindow("RC").getTextWindow("text").y = 8;
         ui.getCompoundWindow("LC").getTextWindow("text").color = 0x60FFFFFF;
         ui.getCompoundWindow("RC").getTextWindow("text").color = 0x60FFFFFF;
     }

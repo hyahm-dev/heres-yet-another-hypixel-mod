@@ -7,7 +7,6 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.List;
@@ -67,7 +66,7 @@ public class NickChecker implements ICommand {
     }
 
     @Override
-    public int compareTo(@NotNull ICommand iCommand) {
+    public int compareTo(ICommand iCommand) {
         return 0;
     }
 }

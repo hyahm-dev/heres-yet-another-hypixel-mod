@@ -129,7 +129,6 @@ public class ConfigManager {
 
             root.add("modules", modules);
             root.add("token", new JsonPrimitive(token));
-            HyahmMain.logger.info(gsonBuilder.toJson(root));
 
             FileWriter f = new FileWriter(configFile);
             f.write(gsonBuilder.toJson(root));
