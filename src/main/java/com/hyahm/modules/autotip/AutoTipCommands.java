@@ -1,7 +1,7 @@
 package com.hyahm.modules.autotip;
 
 import com.hyahm.HyahmMain;
-import com.hyahm.Constants;
+import com.hyahm.utils.Utils;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -31,7 +31,7 @@ public class AutoTipCommands implements ICommand {
     public void processCommand(ICommandSender sender, String[] args) throws CommandException {
         if(args.length == 0) {
             sender.addChatMessage(new ChatComponentText("[" +
-                    Constants.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
+                    Utils.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
                     "]: seconds delay (" +
                     HyahmMain.config.autoTipConfig.delay / 20 +
                     ")"
@@ -48,10 +48,10 @@ public class AutoTipCommands implements ICommand {
         }
         catch (NumberFormatException e) {
             if (args[0].equals("enable")) {
-                sender.addChatMessage(new ChatComponentText("Autotip is " + Constants.getEnabledString(true)));
+                sender.addChatMessage(new ChatComponentText("Autotip is " + Utils.getEnabledString(true)));
                 HyahmMain.config.autoTipConfig.isEnabled = true;
             } else if (args[0].equals("disable")) {
-                sender.addChatMessage(new ChatComponentText("Autotip is " + Constants.getEnabledString(false)));
+                sender.addChatMessage(new ChatComponentText("Autotip is " + Utils.getEnabledString(false)));
                 HyahmMain.config.autoTipConfig.isEnabled = false;
             } else
                 sender.addChatMessage(new ChatComponentText("Invalid Command!"));

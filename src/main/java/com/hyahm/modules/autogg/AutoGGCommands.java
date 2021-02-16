@@ -1,5 +1,5 @@
 package com.hyahm.modules.autogg;
-import com.hyahm.Constants;
+import com.hyahm.utils.Utils;
 import com.hyahm.HyahmMain;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -35,7 +35,7 @@ public class AutoGGCommands implements ICommand {
         if(args.length == 0) {
             // display current config
             sender.addChatMessage(new ChatComponentText("[" +
-                Constants.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
+                Utils.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
                 "]: tick delay (" +
                 HyahmMain.config.autoGGConfig.delay +
                 ")"
@@ -55,10 +55,10 @@ public class AutoGGCommands implements ICommand {
         }
         catch(NumberFormatException e) {
             if (args[0].equals("enable")) {
-                sender.addChatMessage(new ChatComponentText("Autogg is " + Constants.getEnabledString(true)));
+                sender.addChatMessage(new ChatComponentText("Autogg is " + Utils.getEnabledString(true)));
                 HyahmMain.config.autoGGConfig.isEnabled = true;
             } else if (args[0].equals("disable")) {
-                sender.addChatMessage(new ChatComponentText("Autogg is " + Constants.getEnabledString(false)));
+                sender.addChatMessage(new ChatComponentText("Autogg is " + Utils.getEnabledString(false)));
                 HyahmMain.config.autoGGConfig.isEnabled = false;
             } else
                 sender.addChatMessage(new ChatComponentText("Invalid Command!"));

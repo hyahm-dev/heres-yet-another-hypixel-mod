@@ -1,6 +1,6 @@
 package com.hyahm.modules.stats;
 
-import static com.hyahm.Constants.*;
+import static com.hyahm.utils.Utils.*;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;

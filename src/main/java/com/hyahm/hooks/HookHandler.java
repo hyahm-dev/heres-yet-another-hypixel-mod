@@ -1,6 +1,6 @@
 package com.hyahm.hooks;
 
-import com.hyahm.Constants;
+import com.hyahm.utils.Utils;
 import com.hyahm.HyahmMain;
 import com.hyahm.utils.Pair;
 import com.hyahm.utils.ValueComparePair;
@@ -42,7 +42,7 @@ public class HookHandler {
     public void onChatEvent(ClientChatReceivedEvent event)
     {
         // verify its both a server and it is hypixel
-        if(!Constants.isHypixel())
+        if(!Utils.isHypixel())
             return;
 
         // delete orphans because we all are technoblade
@@ -51,10 +51,10 @@ public class HookHandler {
                 .replaceAll("");
 
         // anarchy
-        if(Constants.AutoGGMatch.stream().noneMatch(msg::contains))
+        if(Utils.AutoGGMatch.stream().noneMatch(msg::contains))
             return;
 
-        for (Pattern expr : Constants.MatchNormal) {
+        for (Pattern expr : Utils.MatchNormal) {
             if(expr.matcher(msg).matches())
                 return;
         }

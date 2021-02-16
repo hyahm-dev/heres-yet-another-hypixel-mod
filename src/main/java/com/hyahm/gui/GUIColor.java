@@ -28,6 +28,10 @@ public class GUIColor {
         return ByteBuffer.wrap(new byte[]{a, r, g, b}).getInt();
     }
 
+    public static int toInt(byte a, byte r ,byte g ,byte b) {
+        return ByteBuffer.wrap(new byte[]{a, r, g, b}).getInt();
+    }
+
     public byte getA() {
         return a;
     }

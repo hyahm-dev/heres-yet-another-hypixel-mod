@@ -24,7 +24,7 @@ public class MinecraftMixin {
     @Inject(method="Lnet/minecraft/client/Minecraft;createDisplay()V", at = @At("HEAD"), cancellable = true)
     private void createDisplay(CallbackInfo ci) throws LWJGLException {
         Display.setResizable(true);
-        Display.setTitle("MyCustomTitle");
+        Display.setTitle("HYAHM Client - 1.8.9");
         try {
             Display.create((new PixelFormat()).withDepthBits(24));
         } catch (LWJGLException lwjglexception) {

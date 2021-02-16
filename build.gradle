@@ -19,7 +19,7 @@ apply plugin: 'com.github.johnrengelman.shadow'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "1.0"
+version = "1.0.1-dev"
 group= "com.hyayhm"
 archivesBaseName = "hyahm"
 String modid = "hyahm"
@@ -85,6 +85,7 @@ task runClientFix {
 }
 
 runClient {
+    outputs.upToDateWhen { false }
     standardInput = System.in
 }
 
@@ -92,17 +93,16 @@ build.dependsOn(shadowJar)
 runClient.dependsOn(build)
 runClient.dependsOn(runClientFix)
 
-processResources
-        {
-            inputs.property "version", project.version
-            inputs.property "mcversion", project.minecraft.version
+processResources {
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
 
-            from(sourceSets.main.resources.srcDirs) {
-                include 'mcmod.info'
-                expand 'version':project.version, 'mcversion':project.minecraft.version
-            }
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        expand 'version': project.version, 'mcversion': project.minecraft.version
+    }
 
-            from(sourceSets.main.resources.srcDirs) {
-                exclude 'mcmod.info'
-            }
-        }
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}

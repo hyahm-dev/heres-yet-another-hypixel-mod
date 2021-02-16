@@ -1,6 +1,6 @@
 package com.hyahm.modules.autotip;
 
-import com.hyahm.Constants;
+import com.hyahm.utils.Utils;
 import com.hyahm.HyahmMain;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
@@ -15,7 +15,7 @@ public class AutoTipEvent {
         if (event.phase == TickEvent.Phase.END) {
             if (event.isCanceled() || !HyahmMain.config.autoTipConfig.isEnabled)
                 return;
-            if(!Constants.isHypixel())
+            if(!Utils.isHypixel())
                 return;
 
             tickCounter++;

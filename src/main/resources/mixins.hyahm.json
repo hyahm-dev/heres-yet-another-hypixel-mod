@@ -4,6 +4,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MinecraftMixin",
-    "TNTMixin"
+    "RenderTNTPrimedMixin"
   ]
 }
