@@ -29,7 +29,7 @@ import java.util.Set;
 public class HyahmMain
 {
     public static final String MODID = "hyahm";
-    public static final String VERSION = "1.0.1-dev";
+    public static final String VERSION = "1.0.2-dev";
     public static ConfigManager config = new ConfigManager();
     public static final Logger logger = LogManager.getLogger("HYAHM");
     public static final TickEventScheduler scheduler = new TickEventScheduler();

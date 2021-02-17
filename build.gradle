@@ -25,7 +25,6 @@ if (propFile.canRead()){
     }
 }
 
-<<<<<<< HEAD
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
@@ -34,18 +33,8 @@ apply plugin: 'com.github.johnrengelman.shadow'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "1.0.1-dev"
+version = "1.0.2-dev"
 group= "com.hyayhm"
-=======
-/*
-// for people who want stable - not yet functional for MC 1.8.8 - we require the forgegradle 2.1 snapshot
-plugins {
-    id "net.minecraftforge.gradle.forge" version "2.0.2"
-}
-*/
-version = "1.0.1"
-group= "com.hyahm" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
->>>>>>> master
 archivesBaseName = "hyahm"
 String modid = "hyahm"
 String mixinClassifier = "dep"
