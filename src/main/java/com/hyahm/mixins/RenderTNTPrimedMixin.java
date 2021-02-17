@@ -1,5 +1,6 @@
 package com.hyahm.mixins;
 
+import com.hyahm.HyahmMain;
 import com.hyahm.gui.GUIColor;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;

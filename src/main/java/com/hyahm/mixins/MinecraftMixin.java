@@ -21,7 +21,7 @@ public class MinecraftMixin {
     @Shadow
     private boolean fullscreen;
 
-    @Inject(method="Lnet/minecraft/client/Minecraft;createDisplay()V", at = @At("HEAD"), cancellable = true)
+    @Inject(method= "createDisplay()V", at = @At("HEAD"), cancellable = true)
     private void createDisplay(CallbackInfo ci) throws LWJGLException {
         Display.setResizable(true);
         Display.setTitle("HYAHM Client - 1.8.9");

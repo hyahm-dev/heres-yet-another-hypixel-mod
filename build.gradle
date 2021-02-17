@@ -11,6 +11,20 @@ buildscript {
     }
 }
 
+Properties props = new Properties()
+def propFile = file('login.properties')
+def username = ""
+def password = ""
+if (propFile.canRead()){
+    props.load(new FileInputStream(propFile))
+
+    if (props!=null && props.containsKey('password') && props.containsKey('username')) {
+        username = props['username']
+        password = props['password']
+
+    }
+}
+
 apply plugin: 'java'
 apply plugin: 'net.minecraftforge.gradle.forge'
 apply plugin: 'org.spongepowered.mixin'
@@ -85,6 +99,10 @@ task runClientFix {
 }
 
 runClient {
+    if (username != "") {
+        args '--username', username
+        if (password != "") args '--password', password
+    }
     outputs.upToDateWhen { false }
     standardInput = System.in
 }

@@ -7,9 +7,10 @@
     "mcversion": "${mcversion}",
     "url": "https://github.com/hyahm-dev/heres-yet-another-hypixel-mod",
     "updateUrl": "",
+    "updateJSON": "",
     "authorList": ["HYAHM-dev"],
     "credits": "The dev team",
-    "logoFile": "/hyahmlogo.png",
+    "logoFile": "hyahmlogo.png",
     "screenshots": [],
     "dependencies": []
   }

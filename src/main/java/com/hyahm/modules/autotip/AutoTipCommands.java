@@ -1,6 +1,7 @@
 package com.hyahm.modules.autotip;
 
 import com.hyahm.HyahmMain;
+import com.hyahm.modules.ModuleCommandHandler;
 import com.hyahm.utils.Utils;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -11,6 +12,7 @@ import net.minecraft.util.ChatComponentText;
 import java.util.Arrays;
 import java.util.List;
 
+@ModuleCommandHandler(name = "autotip")
 public class AutoTipCommands implements ICommand {
     @Override
     public String getCommandName() {

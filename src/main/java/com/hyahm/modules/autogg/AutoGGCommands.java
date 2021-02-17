@@ -1,4 +1,6 @@
 package com.hyahm.modules.autogg;
+import com.hyahm.modules.ModuleCommandHandler;
+import com.hyahm.modules.ModuleEventHandler;
 import com.hyahm.utils.Utils;
 import com.hyahm.HyahmMain;
 import net.minecraft.command.CommandException;
@@ -10,6 +12,8 @@ import net.minecraft.util.ChatComponentText;
 import java.util.Arrays;
 import java.util.List;
 
+
+@ModuleCommandHandler(name = "autogg")
 public class AutoGGCommands implements ICommand {
     @Override
     public String getCommandName() { // returns the name of the command to use

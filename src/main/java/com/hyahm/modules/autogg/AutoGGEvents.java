@@ -3,8 +3,10 @@ package com.hyahm.modules.autogg;
 import com.hyahm.HyahmMain;
 import com.hyahm.hooks.GameEndEvent;
 import com.hyahm.hooks.Hook;
+import com.hyahm.modules.ModuleEventHandler;
 import net.minecraft.client.Minecraft;
 
+@ModuleEventHandler(name = "autogg")
 public class AutoGGEvents {
 
     @Hook(level = 1000)

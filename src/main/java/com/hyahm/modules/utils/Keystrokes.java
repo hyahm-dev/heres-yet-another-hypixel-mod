@@ -3,6 +3,7 @@ package com.hyahm.modules.utils;
 import com.hyahm.HyahmMain;
 import com.hyahm.gui.CompoundWindow;
 import com.hyahm.gui.TextWindow;
+import com.hyahm.modules.ModuleEventHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.MouseEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
@@ -12,6 +13,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+@ModuleEventHandler(name = "keystrokes")
 public class Keystrokes {
     long ticks = 0;
     List<Long> rightClicks = new ArrayList<>();

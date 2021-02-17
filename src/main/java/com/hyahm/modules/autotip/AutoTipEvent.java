@@ -1,5 +1,6 @@
 package com.hyahm.modules.autotip;
 
+import com.hyahm.modules.ModuleEventHandler;
 import com.hyahm.utils.Utils;
 import com.hyahm.HyahmMain;
 import net.minecraft.client.Minecraft;
@@ -7,6 +8,7 @@ import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
+@ModuleEventHandler(name = "autotip")
 public class AutoTipEvent {
     int tickCounter = 1;
 
