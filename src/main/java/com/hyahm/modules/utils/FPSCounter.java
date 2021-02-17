@@ -32,8 +32,12 @@ public class FPSCounter {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onPostRender(RenderGameOverlayEvent.Text event) {
+<<<<<<< HEAD:src/main/java/com/hyahm/modules/utils/FPSCounter.java
         if(ConfigManager.fpsConfig.isEnabled)
             fps.render();
+=======
+        //fps.render();
+>>>>>>> master:src/main/java/com/hyahm/utils/FPSCounter.java
     }
 }
 */
