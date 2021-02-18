@@ -34,6 +34,7 @@ public class HyahmMain
     public static final Logger logger = LogManager.getLogger("HYAHM");
     public static final TickEventScheduler scheduler = new TickEventScheduler();
     public static final HookHandler HOOK_HANDLER = new HookHandler();
+    private static ASMDataTable table;
 
     @Mod.Instance
     public static HyahmMain instance;
@@ -42,9 +43,14 @@ public class HyahmMain
     public static void preInit(FMLPreInitializationEvent event) {
         logger.info("----------------HYAHM----------------  ");
         logger.info("Starting preinit, loading configs      ");
-
         config = new ConfigManager(event.getSuggestedConfigurationFile());
+        table = event.getAsmData();
+        logger.info("----------------HYAHM----------------  ");
+    }
 
+    @Mod.EventHandler
+    public static void init(FMLInitializationEvent event) {
+        logger.info("----------------HYAHM----------------  ");
         logger.info("loading handlers...");
 
         logger.info("running mod core init");
@@ -52,9 +58,9 @@ public class HyahmMain
         MinecraftForge.EVENT_BUS.register(HOOK_HANDLER);
         logger.info("mod core init done!");
 
-        for (ASMDataTable.ASMData asmData : event.getAsmData().getAll(ModuleEventHandler.class.getCanonicalName())) {
+        for (ASMDataTable.ASMData asmData : table.getAll(ModuleEventHandler.class.getCanonicalName())) {
             try {
-                Class asmClass = Class.forName(asmData.getClassName());
+                Class<?> asmClass = Class.forName(asmData.getClassName());
                 String name = asmData.getAnnotationInfo().get("name").toString();
 
                 logger.info("Loading module event handler: " + name);
@@ -67,7 +73,7 @@ public class HyahmMain
             }
         }
 
-        for (ASMDataTable.ASMData asmData : event.getAsmData().getAll(ModuleCommandHandler.class.getCanonicalName())) {
+        for (ASMDataTable.ASMData asmData : table.getAll(ModuleCommandHandler.class.getCanonicalName())) {
             try {
                 Class<? extends ICommand> asmClass = Class.forName(asmData.getClassName()).asSubclass(ICommand.class);
                 String name = asmData.getAnnotationInfo().get("name").toString();
@@ -80,14 +86,6 @@ public class HyahmMain
                 logger.error("Error loading command: ", e);
             }
         }
-
-        logger.info("----------------HYAHM----------------  ");
-    }
-
-    @Mod.EventHandler
-    public static void init(FMLInitializationEvent event) {
-        logger.info("----------------HYAHM----------------  ");
-
         logger.info("----------------HYAHM----------------  ");
     }
 
