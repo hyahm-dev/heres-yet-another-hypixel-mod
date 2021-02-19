@@ -95,7 +95,4 @@ public class HyahmMain
 
 
     }
-
-    @SubscribeEvent
-    public void onClientJoinServer(Client)
 }
