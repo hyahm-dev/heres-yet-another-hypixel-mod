@@ -1,0 +1,584 @@
+[
+  {
+    "name": "skyblock",
+    "games": [
+      {
+        "name": "Skyblock",
+        "cmd": "sb"
+      }
+    ]
+  },
+  {
+    "name": "Warlords",
+    "games:": [
+      {
+        "name": "CTF",
+        "cmd": "warlords_ctf_mini"
+      },
+      {
+        "name": "Domination",
+        "cmd": "warlords_domination"
+      },
+      {
+        "name": "Team Deathmatch",
+        "cmd": "warlords_team_deathmatch"
+      }
+    ]
+  },
+  {
+    "name": "Mega Walls",
+    "games": [
+      {
+        "name": "Standard",
+        "cmd": "mw_standard"
+      },
+      {
+        "name": "Faceoff",
+        "cmd": "mw_face_off"
+      }
+    ]
+  },
+  {
+    "name": "Blitz Survival Games",
+    "games": [
+      {
+        "name": "Solo",
+        "cmd": "blitz_solo_normal"
+      },
+      {
+        "name": "Teams",
+        "cmd": "blitz_teams_normal"
+      }
+    ]
+  },
+  {
+    "name": "SkyWars",
+    "games": [
+      {
+        "name": "Ranked",
+        "cmd": "ranked_normal"
+      },
+      {
+        "name": "Solo Normal",
+        "cmd": "solo_normal"
+      },
+      {
+        "name": "Solo Insane",
+        "cmd": "solo_insane"
+      },
+      {
+        "name": "Doubles Normal",
+        "cmd": "teams_normal"
+      },
+      {
+        "name": "Doubles Insane",
+        "cmd": "teams_insane"
+      },
+      {
+        "name": "Mega Normal",
+        "cmd": "mega_normal"
+      },
+      {
+        "name": "Mega Doubles",
+        "cmd": "mega_doubles"
+      },
+      {
+        "name": "Solo TNT Madness",
+        "cmd": "solo_insane_tnt_madness"
+      },
+      {
+        "name": "Doubles TNT Madness",
+        "cmd": "teams_insane_tnt_madness"
+      },
+      {
+        "name": "Solo Rush",
+        "cmd": "solo_insane_rush"
+      },
+      {
+        "name": "Doubles Rush",
+        "cmd": "teams_insane_rush"
+      },
+      {
+        "name": "Solo Slime",
+        "cmd": "solo_insane_slime"
+      },
+      {
+        "name": "Doubles Slime",
+        "cmd": "teams_insane_slime"
+      },
+      {
+        "name": "Solo Lucky Blocks",
+        "cmd": "solo_insane_lucky"
+      },
+      {
+        "name": "Doubles Lucky Blocks",
+        "cmd": "teams_insane_lucky"
+      },
+      {
+        "name": "Hunter vs. Beasts",
+        "cmd": "solo_insane_hunters_vs_beasts"
+      }
+    ]
+  },
+  {
+    "name": "TNT Games",
+    "games": [
+      {
+        "name": "TNT Run",
+        "cmd": "tnt_tntrun"
+      },
+      {
+        "name": "PVP Run",
+        "cmd": "tnt_pvprun"
+      },
+      {
+        "name": "Bowspleef",
+        "cmd": "tnt_bowspleef"
+      },
+      {
+        "name": "TNT Tag",
+        "cmd": "tnt_tntag"
+      },
+      {
+        "name": "TNT Wizards",
+        "cmd": "tnt_capture"
+      }
+    ]
+  },
+  {
+    "name": "Bed Wars",
+    "games": [
+      {
+        "name": "Solos",
+        "cmd": "bedwars_eight_one"
+      },
+      {
+        "name": "Doubles",
+        "cmd": "bedwars_eight_two"
+      },
+      {
+        "name": "3v3v3v3",
+        "cmd": "bedwars_four_three"
+      },
+      {
+        "name": "4v4v4v4",
+        "cmd": "bedwars_four_four"
+      },
+      {
+        "name": "Rush Doubles",
+        "cmd": "bedwars_eight_two_rush"
+      },
+      {
+        "name": "Rush 4v4",
+        "cmd": "bedwars_four_four_rush"
+      },
+      {
+        "name": "Ultimate Doubles",
+        "cmd": "bedwars_eight_two_ultimate"
+      },
+      {
+        "name": "Ultimate 4v4",
+        "cmd": "bedwars_four_four_ultimate"
+      },
+      {
+        "name": "40v40",
+        "cmd": "bedwars_castle"
+      },
+      {
+        "name": "4v4",
+        "cmd": "bedwars_two_four"
+      },
+      {
+        "name": "Voidless Doubles",
+        "cmd": "bedwars_eight_two_voidless"
+      },
+      {
+        "name": "Voidless 4v4",
+        "cmd": "bedwars_four_four_voidless"
+      },
+      {
+        "name": "Armed Doubles",
+        "cmd": "bedwars_eight_two_armed"
+      },
+      {
+        "name": "Armed 4v4",
+        "cmd": "bedwars_four_four_armed"
+      },
+      {
+        "name": "Lucky Blocks Doubles",
+        "cmd": "bedwars_eight_two_lucky"
+      },
+      {
+        "name": "Lucky Blocks 4v4",
+        "cmd": "bedwars_four_four_lucky"
+      }
+    ]
+  },
+  {
+    "name": "The Pit",
+    "games": [
+      {
+        "name": "The Pit",
+        "cmd": "pit"
+      }
+    ]
+  },
+  {
+    "name": "Arcade",
+    "games": [
+      {
+        "name": "Hole in the Wall",
+        "cmd": "arcade_hole_in_the_wall"
+      },
+      {
+        "name": "Football",
+        "cmd": "arcade_soccer"
+      },
+      {
+        "name": "Bounty Hunters",
+        "cmd": "arcade_bounty_hunters"
+      },
+      {
+        "name": "Pixel Painters",
+        "cmd": "arcade_pixel_painters"
+      },
+      {
+        "name": "Dragon Wars",
+        "cmd": "arcade_dragon_wars"
+      },
+      {
+        "name": "Ender Spleef",
+        "cmd": "arcade_ender_spleef"
+      },
+      {
+        "name": "Galaxy Wars",
+        "cmd": "arcade_starwars"
+      },
+      {
+        "name": "Throw Out",
+        "cmd": "arcade_throw_out"
+      },
+      {
+        "name": "Creeper Attack",
+        "cmd": "arcade_creeper_attack"
+      },
+      {
+        "name": "Party Games",
+        "cmd": "arcade_party_games_1"
+      },
+      {
+        "name": "Farm Hunt",
+        "cmd": "arcade_farm_hunt"
+      },
+      {
+        "name": "Zombies Dead End",
+        "cmd": "arcade_zombies_dead_end"
+      },
+      {
+        "name": "Zombies Bad Blood",
+        "cmd": "arcade_zombies_bad_blood"
+      },
+      {
+        "name": "Zombies Alien Arcadium",
+        "cmd": "arcade_zombies_alien_arcadium"
+      },
+      {
+        "name": "Hide and Seek Prop Hunt",
+        "cmd": "arcade_hide_and_seek_prop_hunt"
+      },
+      {
+        "name": "Hide and Seek Party Pooper",
+        "cmd": "arcade_hide_and_seek_party_pooper"
+      },
+      {
+        "name": "Hypixel Says",
+        "cmd": "arcade_simon_says"
+      },
+      {
+        "name": "Santa Says",
+        "cmd": "arcade_santa_says"
+      },
+      {
+        "name": "Mini Walls",
+        "cmd": "arcade_mini_walls"
+      },
+      {
+        "name": "Blocking Dead",
+        "cmd": "arcade_day_one"
+      },
+      {
+        "name": "Capture The Wool",
+        "cmd": "arcade_pvp_ctw"
+      }
+    ]
+  },
+  {
+    "name": "Cops and Crims",
+    "games": [
+      {
+        "name": "Defusal",
+        "cmd": "mcgo_normal"
+      },
+      {
+        "name": "Deathmatch",
+        "cmd": "mcgo_deathmatch"
+      },
+      {
+        "name": "Defusal Party",
+        "cmd": "mcgo_normal_party"
+      },
+      {
+        "name": "Deathmatch Party",
+        "cmd": "mcgo_deathmatch_party"
+      }
+    ]
+  },
+  {
+    "name": "Build Battle",
+    "games": [
+      {
+        "name": "Solo",
+        "cmd": "build_battle_solo_normal"
+      },
+      {
+        "name": "Teams",
+        "cmd": "build_battle_teams_normal"
+      },
+      {
+        "name": "Pro Mode",
+        "cmd": "build_battle_solo_pro"
+      },
+      {
+        "name": "Guess The Build",
+        "cmd": "build_battle_guess_the_build"
+      }
+    ]
+  },
+  {
+    "name": "UHC",
+    "games": [
+      {
+        "name": "Solo",
+        "cmd": "uhc_solo"
+      },
+      {
+        "name": "Teams",
+        "cmd": "uhc_teams"
+      },
+      {
+        "name": "Events Mode",
+        "cmd": "uhc_events"
+      }
+    ]
+  },
+  {
+    "name": "Classic Games",
+    "games": [
+      {
+        "name": "Vampirez",
+        "cmd": "vampirez"
+      },
+      {
+        "name": "Quake Solo",
+        "cmd": "quake_solo"
+      },
+      {
+        "name": "Quake Teams",
+        "cmd": "quake_teams"
+      },
+      {
+        "name": "Paintball",
+        "cmd": "paintball"
+      },
+      {
+        "name": "Arena 1v1",
+        "cmd": "arena_1v1"
+      },
+      {
+        "name": "Arena 2v2",
+        "cmd": "arena_2v2"
+      },
+      {
+        "name": "Arena 4v4",
+        "cmd": "arena_4v4"
+      },
+      {
+        "name": "Walls",
+        "cmd": "walls"
+      },
+      {
+        "name": "Turbo Kart Racers",
+        "cmd": "tkr"
+      }
+    ]
+  },
+  {
+    "name": "Duels",
+    "games": [
+      {
+        "name": "Solo Classic",
+        "cmd": "duels_classic_duel"
+      },
+      {
+        "name": "Solo SkyWars",
+        "cmd": "duels_sw_duel"
+      },
+      {
+        "name": "Doubles SkyWars",
+        "cmd": "duels_sw_doubles"
+      },
+      {
+        "name": "Solo Bow",
+        "cmd": "duels_bow_duel"
+      },
+      {
+        "name": "Solo UHC",
+        "cmd": "duels_uhc_duel"
+      },
+      {
+        "name": "Doubles UHC",
+        "cmd": "duels_uhc_doubles"
+      },
+      {
+        "name": "Teams UHC",
+        "cmd": "duels_uhc_four"
+      },
+      {
+        "name": "Deathmatch UHC",
+        "cmd": "duels_uhc_meetup"
+      },
+      {
+        "name": "Solo NoDebuffs",
+        "cmd": "duels_potion_duel"
+      },
+      {
+        "name": "Solo Combo",
+        "cmd": "duels_combo_duel"
+      },
+      {
+        "name": "Solo Potion",
+        "cmd": "duels_potion_duel"
+      },
+      {
+        "name": "Solo OP",
+        "cmd": "duels_op_duel"
+      },
+      {
+        "name": "Doubles OP",
+        "cmd": "duels_op_doubles"
+      },
+      {
+        "name": "Solo Mega Walls",
+        "cmd": "duels_mw_duel"
+      },
+      {
+        "name": "Doubles Mega Walls",
+        "cmd": "duels_mw_doubles"
+      },
+      {
+        "name": "Solo Sumo",
+        "cmd": "duels_sumo_duel"
+      },
+      {
+        "name": "Solo Blitz",
+        "cmd": "duels_blitz_duel"
+      },
+      {
+        "name": "Solo Bow Spleef",
+        "cmd": "duels_bowspleef_duel"
+      },
+      {
+        "name": "Bridge 1v1",
+        "cmd": "duels_bridge_duel"
+      },
+      {
+        "name": "Bridge 2v2",
+        "cmd": "duels_bridge_doubles"
+      },
+      {
+        "name": "Bridge 4v4",
+        "cmd": "duels_bridge_four"
+      },
+      {
+        "name": "Bridge 2v2v2v2",
+        "cmd": "duels_bridge_2v2v2v2"
+      },
+      {
+        "name": "Bridge 3v3v3v3",
+        "cmd": "duels_bridge_3v3v3v3"
+      }
+    ]
+  },
+  {
+    "name": "Speed UHC",
+    "games": [
+      {
+        "name": "Solo Normal",
+        "cmd": "speed_solo_normal"
+      },
+      {
+        "name": "Team Normal",
+        "cmd": "speed_team_normal"
+      }
+    ]
+  },
+  {
+    "name": "Smash Heroes",
+    "games": [
+      {
+        "name": "Solo 1v1v1v1",
+        "cmd": "super_smash_solo_normal"
+      },
+      {
+        "name": "Teams 2v2",
+        "cmd": "super_smash_2v2_normal"
+      },
+      {
+        "name": "Teams 2v2v2",
+        "cmd": "super_smash_teams_normal"
+      },
+      {
+        "name": "1v1 Mode",
+        "cmd": "super_smash_1v1_normal"
+      },
+      {
+        "name": "Friends 1v1v1v1",
+        "cmd": "super_smash_friends_normal"
+      }
+    ]
+  },
+  {
+    "name": "Murder Mystery",
+    "games": [
+      {
+        "name": "Classic",
+        "cmd": "murder_classic"
+      },
+      {
+        "name": "Double Up",
+        "cmd": "murder_double_up"
+      },
+      {
+        "name": "Assassins",
+        "cmd": "murder_assassins"
+      },
+      {
+        "name": "Infection",
+        "cmd": "murder_infection"
+      }
+    ]
+  },
+  {
+    "name": "TowerWars (Prototype)",
+    "games": [
+      {
+        "name": "Solo Mode",
+        "cmd": "prototype_towerwars_solo"
+      },
+      {
+        "name": "Teams Mode",
+        "cmd": "prototype_towerwars_team_of_two"
+      }
+    ]
+  }
+]

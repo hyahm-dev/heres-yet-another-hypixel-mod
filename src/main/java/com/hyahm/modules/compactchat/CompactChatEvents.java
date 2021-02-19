@@ -15,7 +15,7 @@ public class CompactChatEvents {
     private int amount = 0;
 
     @SubscribeEvent(priority = EventPriority.LOW)
-    public void chat(ClientChatReceivedEvent event) {
+    public void onClientReceivedChat(ClientChatReceivedEvent event) {
         final GuiNewChat gui = Minecraft.getMinecraft().ingameGUI.getChatGUI();
 
         if (event.type == 0) {
@@ -23,13 +23,17 @@ public class CompactChatEvents {
             if (msg.equals(event.message.getUnformattedText())) {
                 gui.deleteChatLine(line);
                 amount++;
-                msg = event.message.getUnformattedText();
-                event.message.appendText(EnumChatFormatting.GRAY + " [" + amount + "]");
+                event.message.appendText(EnumChatFormatting.GRAY + " [x" + amount + "]");
             }
             else {
                 amount = 1;
                 msg = event.message.getUnformattedText();
             }
+
+            gui.printChatMessageWithOptionalDeletion(event.message, ++line);
+
+            if (line > 256)
+                line = 0;
 
             if(event.isCancelable())
                 event.setCanceled(true);
