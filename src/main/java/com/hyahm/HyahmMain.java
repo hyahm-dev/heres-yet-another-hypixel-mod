@@ -1,5 +1,7 @@
 package com.hyahm;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.hyahm.modules.ModuleCommandHandler;
 import com.hyahm.modules.ModuleEventHandler;
 import com.hyahm.modules.autogg.AutoGGCommands;
@@ -10,6 +12,7 @@ import com.hyahm.modules.autotip.AutoTipEvent;
 import com.hyahm.hooks.HookHandler;
 import com.hyahm.modules.stats.NickChecker;
 import com.hyahm.modules.utils.Keystrokes;
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommand;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,6 +39,7 @@ public class HyahmMain
     public static final TickEventScheduler scheduler = new TickEventScheduler();
     public static final HookHandler HOOK_HANDLER = new HookHandler();
     private static ASMDataTable table;
+    public static final Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     @Mod.Instance
     public static HyahmMain instance;
@@ -51,6 +55,7 @@ public class HyahmMain
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
+        //Minecraft.getMinecraft().getResourceManager().getResource().getInputStream();
         logger.info("----------------HYAHM----------------  ");
         logger.info("loading handlers...");
 

@@ -52,10 +52,10 @@ public abstract class RenderTNTPrimedMixin extends Render<EntityTNTPrimed> {
             GlStateManager.scale(-f1, -f1, f1);
             GlStateManager.disableLighting();
             GlStateManager.depthMask(false);
-            GlStateManager.disableDepth();
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-            Tessellator tessellator = Tessellator.getInstance();
+            Tessellator tessellator = Tessellator.getInstance();            GlStateManager.disableDepth();
+
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
             int j = fontrenderer.getStringWidth(str) / 2;
             GlStateManager.disableTexture2D();

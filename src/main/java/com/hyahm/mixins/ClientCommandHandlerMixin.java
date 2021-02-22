@@ -7,11 +7,12 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(ClientCommandHandler.class)
+@Mixin(value = ClientCommandHandler.class, remap = false)
 public class ClientCommandHandlerMixin {
-    @Inject(remap = false, method = "executeCommand(Lnet/minecraft/command/ICommandSender;Ljava/lang/String;)I", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "executeCommand(Lnet/minecraft/command/ICommandSender;Ljava/lang/String;)I", at = @At("HEAD"), cancellable = true)
     private void executeCommand(ICommandSender sender, String message, CallbackInfoReturnable<Integer> cir) {
         if(!message.startsWith("/"))
             cir.setReturnValue(0);
+
     }
 }

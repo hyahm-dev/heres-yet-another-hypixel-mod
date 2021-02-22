@@ -1,6 +1,10 @@
 package com.hyahm;
 
 import com.google.gson.*;
+import com.hyahm.modules.ModuleEventHandler;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.discovery.ASMDataTable;
+
 import java.io.*;
 import java.time.Duration;
 import java.time.Instant;
