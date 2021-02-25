@@ -1,7 +1,6 @@
 package com.hyahm.modules.gameselector;
 
-
-import com.google.gson.JsonObject;
+import com.google.gson.JsonElement;
 import com.google.gson.stream.JsonReader;
 import com.hyahm.HyahmMain;
 import com.hyahm.modules.ModuleEventHandler;
@@ -18,8 +17,8 @@ public class GameSelectorEvents {
         ResourceLocation location = new ResourceLocation(HyahmMain.MODID, "meta/gameselector/gamemappings.json");
         try(InputStream stream = Minecraft.getMinecraft().getResourceManager().getResource(location).getInputStream()) {
             JsonReader reader = new JsonReader(new InputStreamReader(stream));
-            reader.beginObject();
-            JsonObject obj = HyahmMain.gson.fromJson(reader, JsonObject.class);
+            reader.beginArray();
+            JsonElement obj = HyahmMain.gson.fromJson(reader, JsonElement.class);
 
         }
         catch (IOException e) {

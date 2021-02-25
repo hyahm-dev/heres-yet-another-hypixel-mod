@@ -1,0 +1,7 @@
+Put cape textures here
+I know this is open source so anyone can just hack it so you have all the cosmetics
+I could care less, and it wont show up in other people's mod
+
+I'm writing this for fun, and cosmetics are just to raise some money
+
+pull requests for capes *will not* be accepted
