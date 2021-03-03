@@ -2,6 +2,7 @@ package com.hyahm;
 
 import com.google.gson.*;
 import com.hyahm.modules.ModuleEventHandler;
+import com.hyahm.utils.Utils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
 
@@ -68,7 +69,6 @@ public class ConfigManager {
 
     public ConfigManager(File config) {
         this();
-        Gson gson = new Gson();
 
         this.configFile = config;
 
@@ -77,15 +77,8 @@ public class ConfigManager {
                 HyahmMain.logger.info("Loading config with json: ");
                 HyahmMain.logger.info("Reading and parsing config file at: " + config.getAbsolutePath());
                 Instant start = Instant.now();
-                FileReader reader = new FileReader(configFile);
-                BufferedReader bufferedReader = new BufferedReader(reader);
-                StringBuilder builder = new StringBuilder();
-
-                String currentLine;
-                while ((currentLine = bufferedReader.readLine()) != null) {
-                    builder.append(currentLine);
-                }
-                String complete = builder.toString();
+                FileInputStream reader = new FileInputStream(configFile);
+                String complete = Utils.readAll(reader);
 
                 JsonObject cfg = new JsonParser().parse(complete).getAsJsonObject();
 
@@ -94,13 +87,13 @@ public class ConfigManager {
                 HyahmMain.logger.debug("Time to load config file: "+ Duration.between(start, end));
                 HyahmMain.logger.info("Loading data");
                 if(modules.has("autogg"))
-                    autoGGConfig = gson.fromJson(modules.getAsJsonObject("autogg"), AutoGGConfig.class);
+                    autoGGConfig = HyahmMain.gson.fromJson(modules.getAsJsonObject("autogg"), AutoGGConfig.class);
                 if(modules.has("autotip"))
-                    autoTipConfig = gson.fromJson(modules.getAsJsonObject("autotip"), AutoTipConfig.class);
+                    autoTipConfig = HyahmMain.gson.fromJson(modules.getAsJsonObject("autotip"), AutoTipConfig.class);
                 if(modules.has("fps"))
-                    fpsConfig = gson.fromJson(modules.getAsJsonObject("fps"), FPSConfig.class);
+                    fpsConfig = HyahmMain.gson.fromJson(modules.getAsJsonObject("fps"), FPSConfig.class);
                 if(modules.has("keystrokes"))
-                    cpsConfig = gson.fromJson(modules.getAsJsonObject("keystrokes"), CPSConfig.class);
+                    cpsConfig = HyahmMain.gson.fromJson(modules.getAsJsonObject("keystrokes"), CPSConfig.class);
 
                 token = cfg.getAsJsonPrimitive("token").getAsString();
             }

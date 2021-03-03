@@ -6,9 +6,10 @@ import com.hyahm.hooks.Hook;
 import com.hyahm.modules.ModuleEventHandler;
 import net.minecraft.client.Minecraft;
 
+import java.lang.reflect.Method;
+
 @ModuleEventHandler(name = "autogg")
 public class AutoGGEvents {
-
     @Hook(level = 1000)
      public void autoGGHook(GameEndEvent e) {
         if(HyahmMain.config.autoGGConfig.isEnabled)

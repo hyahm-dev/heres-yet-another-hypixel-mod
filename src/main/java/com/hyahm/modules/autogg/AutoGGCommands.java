@@ -1,6 +1,8 @@
 package com.hyahm.modules.autogg;
+import com.hyahm.IModuleCommand;
 import com.hyahm.modules.ModuleCommandHandler;
 import com.hyahm.modules.ModuleEventHandler;
+import com.hyahm.utils.ArgsOption;
 import com.hyahm.utils.Utils;
 import com.hyahm.HyahmMain;
 import net.minecraft.command.CommandException;
@@ -13,28 +15,19 @@ import java.util.Arrays;
 import java.util.List;
 
 
-@ModuleCommandHandler(name = "autogg")
-public class AutoGGCommands implements ICommand {
+@ModuleCommandHandler(name = "autogg", cmd = "autogg")
+public class AutoGGCommands implements IModuleCommand {
+    static ArgsOption<?>[] options = {
+
+    };
+
     @Override
-    public String getCommandName() { // returns the name of the command to use
-        return "autogg";
+    public String usage(ICommandSender sender) {
+        return "Usage: autogg [enable/disable/<ticks>]";
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
-        return  "Usage: /autogg [delay] or /autogg [enable/disable]. /autogg gets current info";
-    }
-
-    @Override
-    public List<String> getCommandAliases() {
-        return Arrays.asList("gg", "agg"); // returns alternative commands
-    }
-
-    @Override
-    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-        HyahmMain.scheduler.enqueueEvent(200, () -> {
-            HyahmMain.logger.info("test");
-        });
+    public void exec(ICommandSender sender, String[] args) throws CommandException {
         // check if it has 0 args
         if(args.length == 0) {
             // display current config
@@ -68,26 +61,5 @@ public class AutoGGCommands implements ICommand {
                 sender.addChatMessage(new ChatComponentText("Invalid Command!"));
             HyahmMain.config.sync();
         }
-    }
-
-    // basic commands stuff
-    @Override
-    public boolean canCommandSenderUseCommand(ICommandSender sender) {
-        return true;
-    }
-
-    @Override
-    public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-        return null;
-    }
-
-    @Override
-    public boolean isUsernameIndex(String[] args, int index) {
-        return false;
-    }
-
-    @Override
-    public int compareTo(ICommand o) {
-        return 0;
     }
 }

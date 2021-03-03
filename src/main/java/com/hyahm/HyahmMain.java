@@ -32,6 +32,8 @@ import java.util.Set;
 @Mod(modid = HyahmMain.MODID, version = HyahmMain.VERSION, clientSideOnly = true, acceptedMinecraftVersions = "[1.8.9]")
 public class HyahmMain
 {
+    public static final String MOD_UPDATE = "https://hyahm-dev.github.com/mod/updates.json";
+    public static final BasicCommands.HyahmCommand HYAHM_COMMAND = new BasicCommands.HyahmCommand();
     public static final String MODID = "hyahm";
     public static final String VERSION = "1.1-dev";
     public static ConfigManager config = new ConfigManager();
@@ -55,7 +57,6 @@ public class HyahmMain
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
-        //Minecraft.getMinecraft().getResourceManager().getResource().getInputStream();
         logger.info("----------------HYAHM----------------  ");
         logger.info("loading handlers...");
 
@@ -81,12 +82,13 @@ public class HyahmMain
 
         for (ASMDataTable.ASMData asmData : table.getAll(ModuleCommandHandler.class.getCanonicalName())) {
             try {
-                Class<? extends ICommand> asmClass = Class.forName(asmData.getClassName()).asSubclass(ICommand.class);
+                Class<? extends IModuleCommand> asmClass = Class.forName(asmData.getClassName()).asSubclass(IModuleCommand.class);
                 String name = asmData.getAnnotationInfo().get("name").toString();
+                String cmd = asmData.getAnnotationInfo().get("cmd").toString();
 
                 logger.info("Loading module command: " + name);
-                ICommand instance = asmClass.newInstance();
-                ClientCommandHandler.instance.registerCommand(instance);
+                IModuleCommand instance = asmClass.newInstance();
+                HYAHM_COMMAND.register(cmd, instance);
                 logger.info("Loading module command: " + name + ": done!");
             } catch (Exception e) {
                 logger.error("Error loading command: ", e);

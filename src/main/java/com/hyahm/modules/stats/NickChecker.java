@@ -1,6 +1,8 @@
 package com.hyahm.modules.stats;
 
 import static com.hyahm.utils.Utils.*;
+
+import com.hyahm.IModuleCommand;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -11,24 +13,14 @@ import net.minecraft.util.EnumChatFormatting;
 import java.util.Arrays;
 import java.util.List;
 
-public class NickChecker implements ICommand {
+public class NickChecker implements IModuleCommand {
     @Override
-    public String getCommandName() {
-        return "checknick";
+    public String usage(ICommandSender sender) {
+        return "usage: /checknick [name]...";
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
-        return "usage: /checknick [name]";
-    }
-
-    @Override
-    public List<String> getCommandAliases() {
-        return Arrays.asList("cnick", "isnick");
-    }
-
-    @Override
-    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+    public void exec(ICommandSender sender, String[] args) throws CommandException {
         for (String s : args) {
             // check if it matches regex
             int nickConfidence = 0;
@@ -48,25 +40,5 @@ public class NickChecker implements ICommand {
                     throw new IllegalStateException("wtf");
             }
         }
-    }
-
-    @Override
-    public boolean canCommandSenderUseCommand(ICommandSender sender) {
-        return true;
-    }
-
-    @Override
-    public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-        return null;
-    }
-
-    @Override
-    public boolean isUsernameIndex(String[] args, int index) {
-        return true;
-    }
-
-    @Override
-    public int compareTo(ICommand iCommand) {
-        return 0;
     }
 }

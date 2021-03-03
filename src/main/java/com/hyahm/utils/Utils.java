@@ -12,16 +12,34 @@ import net.minecraft.util.EnumChatFormatting;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.InputStreamEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.lwjgl.opengl.GL11;
 
 import javax.swing.text.html.parser.Entity;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public class Utils {
+    public static Function<String, Boolean> enableDisable = (str) -> {
+        if(str.equals("enable"))
+            return true;
+        else if(str.equals("disable"))
+            return false;
+
+        throw new IllegalArgumentException();
+    };
+
+    public static Function<String, Integer> integerParser = Integer::parseInt;
+
     public static List<String> AutoGGMatch = Arrays.asList(
         "1st Killer - ",
         "1st Place - ",
@@ -67,5 +85,31 @@ public class Utils {
                 EnumChatFormatting.BOLD +
                 (isEnabled ? "Enabled" : "Disabled") +
                 EnumChatFormatting.RESET;
+    }
+
+    public static String readAll(InputStream stream) throws IOException {
+        try (InputStreamReader istream = new InputStreamReader(stream)) {
+            BufferedReader bufferedReader = new BufferedReader(istream);
+            StringBuilder builder = new StringBuilder();
+
+            String currentLine;
+            while ((currentLine = bufferedReader.readLine()) != null)
+                builder.append(currentLine);
+
+            return builder.toString();
+        }
+    }
+
+    public static boolean parseArg(String str, ArgsOption<?>... argsOptions) {
+        for(ArgsOption<?> opt: argsOptions) {
+            try {
+                opt.tryExec(str);
+                return true;
+            }
+            catch (Exception e) {
+
+            }
+        }
+        return false;
     }
 }

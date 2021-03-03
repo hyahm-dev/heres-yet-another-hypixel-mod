@@ -1,6 +1,7 @@
 package com.hyahm.modules.autotip;
 
 import com.hyahm.HyahmMain;
+import com.hyahm.IModuleCommand;
 import com.hyahm.modules.ModuleCommandHandler;
 import com.hyahm.utils.Utils;
 import net.minecraft.command.CommandException;
@@ -12,25 +13,15 @@ import net.minecraft.util.ChatComponentText;
 import java.util.Arrays;
 import java.util.List;
 
-@ModuleCommandHandler(name = "autotip")
-public class AutoTipCommands implements ICommand {
+@ModuleCommandHandler(name = "autotip", cmd = "autotip")
+public class AutoTipCommands implements IModuleCommand {
     @Override
-    public String getCommandName() {
-        return "autotip";
+    public String usage(ICommandSender sender) {
+        return  "Usage: autotip [delay] or /autotip [enable/disable]. /autotip gets current info";
     }
 
     @Override
-    public String getCommandUsage(ICommandSender sender) {
-        return  "Usage: /autotip [delay] or /autotip [enable/disable]. /autotip gets current info";
-    }
-
-    @Override
-    public List<String> getCommandAliases() {
-        return Arrays.asList("atip", "at");
-    }
-
-    @Override
-    public void processCommand(ICommandSender sender, String[] args) throws CommandException {
+    public void exec(ICommandSender sender, String[] args) throws CommandException {
         if(args.length == 0) {
             sender.addChatMessage(new ChatComponentText("[" +
                     Utils.getEnabledString(HyahmMain.config.autoGGConfig.isEnabled) +
@@ -60,26 +51,5 @@ public class AutoTipCommands implements ICommand {
 
             HyahmMain.config.sync();
         }
-    }
-
-    // basic commands stuff
-    @Override
-    public boolean canCommandSenderUseCommand(ICommandSender sender) {
-        return true;
-    }
-
-    @Override
-    public List<String> addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) {
-        return null;
-    }
-
-    @Override
-    public boolean isUsernameIndex(String[] args, int index) {
-        return false;
-    }
-
-    @Override
-    public int compareTo(ICommand o) {
-        return 0;
     }
 }
