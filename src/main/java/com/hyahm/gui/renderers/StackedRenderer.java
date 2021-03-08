@@ -1,6 +1,5 @@
 package com.hyahm.gui.renderers;
 
-import com.hyahm.utils.Pair;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.Gui;
@@ -15,7 +14,7 @@ public class StackedRenderer implements IRenderer{
         double scale;
 
         PackData(int x, int y, double scale) {
-            this.x=x;
+            this.x = x;
             this.y = y;
             this.scale = scale;
         }

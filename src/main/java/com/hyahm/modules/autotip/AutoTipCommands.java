@@ -5,13 +5,8 @@ import com.hyahm.IModuleCommand;
 import com.hyahm.modules.ModuleCommandHandler;
 import com.hyahm.utils.Utils;
 import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
-
-import java.util.Arrays;
-import java.util.List;
 
 @ModuleCommandHandler(name = "autotip", cmd = "autotip")
 public class AutoTipCommands implements IModuleCommand {

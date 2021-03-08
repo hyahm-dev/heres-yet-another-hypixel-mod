@@ -7,7 +7,6 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
-import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -122,8 +121,10 @@ public class BasicCommands {
 
         @Override
         public void processCommand(ICommandSender sender, String[] args) throws CommandException {
-            if(args.length < 1)
+            if(args.length < 1) {
                 sender.addChatMessage(new ChatComponentText("Invalid Usage! Use /hyahm help!"));
+                return;
+            }
 
             String name = args[0];
             String[] modArgs = Arrays.copyOfRange(args, 1, args.length);

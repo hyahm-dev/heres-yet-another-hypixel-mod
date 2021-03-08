@@ -1,6 +1,7 @@
 package com.hyahm.mixins;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.item.ItemStack;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;

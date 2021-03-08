@@ -5,6 +5,7 @@
   "mixins": [
     "ClientCommandHandlerMixin",
     "MinecraftMixin",
-    "RenderTNTPrimedMixin"
+    "RenderTNTPrimedMixin",
+    "ScoreboardMixin"
   ]
 }

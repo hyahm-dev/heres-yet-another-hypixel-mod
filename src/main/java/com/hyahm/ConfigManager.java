@@ -1,10 +1,7 @@
 package com.hyahm;
 
 import com.google.gson.*;
-import com.hyahm.modules.ModuleEventHandler;
 import com.hyahm.utils.Utils;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.discovery.ASMDataTable;
 
 import java.io.*;
 import java.time.Duration;
@@ -13,21 +10,21 @@ import java.time.Instant;
 public class ConfigManager {
     private File configFile;
 
-    public class AutoGGConfig {
+    public static class AutoGGConfig {
         public int delay = 10;
         public boolean isEnabled = true;
     }
 
-    public class AutoTipConfig {
+    public static class AutoTipConfig {
         public int delay = 6000;
         public boolean isEnabled = true;
     }
 
-    public class BedwarsConfig {
+    public static class BedwarsConfig {
         public boolean isLevelsEnabled = true;
     }
 
-    public class FPSConfig {
+    public static class FPSConfig {
         public boolean isEnabled = true;
         public double scalePosX = .1;
         public double scalePosY = .1;
@@ -35,7 +32,7 @@ public class ConfigManager {
         public double scaleHeight = .1;
     }
 
-    public class CPSConfig {
+    public static class CPSConfig {
         public boolean isEnabledRC = true;
         public double scalePosXRC = .1;
         public double scalePosYRC = .1;

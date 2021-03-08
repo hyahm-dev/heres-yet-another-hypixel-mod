@@ -1,6 +1,5 @@
 package com.hyahm.mixins;
 
-import com.hyahm.HyahmMain;
 import com.hyahm.gui.GUIColor;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -54,7 +53,8 @@ public abstract class RenderTNTPrimedMixin extends Render<EntityTNTPrimed> {
             GlStateManager.depthMask(false);
             GlStateManager.enableBlend();
             GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
-            Tessellator tessellator = Tessellator.getInstance();            GlStateManager.disableDepth();
+            Tessellator tessellator = Tessellator.getInstance();
+            GlStateManager.disableDepth();
 
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
             int j = fontrenderer.getStringWidth(str) / 2;

@@ -1,5 +1,7 @@
 package com.hyahm.utils;
 
+import com.hyahm.utils.function.ArgumentStringConsumer;
+import com.hyahm.utils.function.Fallback;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.renderer.GlStateManager;
@@ -7,7 +9,9 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.entity.RenderTNTPrimed;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
+import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.item.EntityTNTPrimed;
+import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
@@ -18,10 +22,7 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.lwjgl.opengl.GL11;
 
 import javax.swing.text.html.parser.Entity;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -29,7 +30,7 @@ import java.util.function.Function;
 import java.util.regex.Pattern;
 
 public class Utils {
-    public static Function<String, Boolean> enableDisable = (str) -> {
+    public static ArgumentStringConsumer<Boolean> enableDisable = (str) -> {
         if(str.equals("enable"))
             return true;
         else if(str.equals("disable"))
@@ -38,7 +39,9 @@ public class Utils {
         throw new IllegalArgumentException();
     };
 
-    public static Function<String, Integer> integerParser = Integer::parseInt;
+    public static ArgumentStringConsumer<Integer> integerParser = Integer::parseInt;
+
+    public static Fallback invalidCmd = (sender) -> sender.addChatMessage(new ChatComponentText("Invalid command!"));
 
     public static List<String> AutoGGMatch = Arrays.asList(
         "1st Killer - ",
@@ -100,16 +103,28 @@ public class Utils {
         }
     }
 
-    public static boolean parseArg(String str, ArgsOption<?>... argsOptions) {
+    public static int parseArg(ICommandSender sender, String str,  Fallback fallback, ArgsOption<?>... argsOptions) {
         for(ArgsOption<?> opt: argsOptions) {
             try {
-                opt.tryExec(str);
-                return true;
+                return opt.tryExec(sender, str) ? 1 : -1;
             }
-            catch (Exception e) {
+            catch (Exception ignored) {
 
             }
         }
-        return false;
+        fallback.fallback(sender);
+        return 0;
+    }
+
+    public static int parseArg(ICommandSender sender, String str, ArgsOption<?>... argsOptions) {
+        for(ArgsOption<?> opt: argsOptions) {
+            try {
+                return opt.tryExec(sender, str) ? 1 : -1;
+            }
+            catch (Exception ignored) {
+
+            }
+        }
+        return 0;
     }
 }

@@ -1,17 +1,12 @@
 package com.hyahm.modules.stats;
 
-import static com.hyahm.utils.Utils.*;
-
 import com.hyahm.IModuleCommand;
 import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
 
-import java.util.Arrays;
-import java.util.List;
+import static com.hyahm.utils.Utils.matchNick;
 
 public class NickChecker implements IModuleCommand {
     @Override

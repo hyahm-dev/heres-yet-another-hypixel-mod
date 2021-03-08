@@ -94,6 +94,8 @@ public class HyahmMain
                 logger.error("Error loading command: ", e);
             }
         }
+
+        ClientCommandHandler.instance.registerCommand(HYAHM_COMMAND);
         logger.info("----------------HYAHM----------------  ");
     }
 

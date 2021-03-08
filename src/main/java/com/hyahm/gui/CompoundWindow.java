@@ -3,10 +3,8 @@ package com.hyahm.gui;
 import com.hyahm.gui.renderers.IRenderer;
 import com.hyahm.gui.renderers.StackedRenderer;
 
-import javax.xml.soap.Text;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
 
 public class CompoundWindow extends RectangleWindow implements IWindow {
     StackedRenderer renderer;
